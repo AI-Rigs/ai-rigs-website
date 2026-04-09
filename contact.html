@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Contact AI Rigs — Tell us your AI workload requirements and we'll architect the ideal hardware and software stack for you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Contact Us | AI Rigs</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <span>AI</span>RIGS
+      </a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="hero" style="min-height: 28vh; padding: 6rem 0 3rem;">
+    <div class="hero-bg"></div>
+    <div class="container hero-content" style="text-align: center; align-items: center;">
+      <h1 class="hero-title" style="font-size: clamp(2rem, 5vw, 3.2rem);">Get in <span class="highlight">Touch</span>
+      </h1>
+      <p class="hero-subtitle" style="max-width: 560px;">
+        Detail your specific use case and our engineers will architect the ideal hardware and software stack for you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lead Generation Form Section -->
+  <section class="lead-section" id="lead-form" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="lead-container">
+        <div class="lead-info">
+          <h2>Let's Build Your Perfect Workflow Engine</h2>
+          <p>Detail your specific use case, and our engineers will architect the ideal hardware and software stack to
+            maximize your productivity. We don't believe in one-size-fits-all.</p>
+          <ul class="lead-benefits">
+            <li>✓ Response within 24 hours</li>
+            <li>✓ Hardware &amp; Software Recommendations</li>
+            <li>✓ Transparent Pricing</li>
+          </ul>
+        </div>
+        <div class="lead-form-wrapper">
+          <form id="aiRigForm" class="custom-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="jane@company.com">
+            </div>
+            <div class="form-group">
+              <label for="usecase">Primary Use Case</label>
+              <select id="usecase" name="usecase" required>
+                <option value="" disabled selected>Select your primary workload</option>
+                <option value="llm_training">Model Training &amp; Fine-Tuning</option>
+                <option value="llm_inference">Agentic software development</option>
+                <option value="audio_video_gen">Audio / Video Generation</option>
+                <option value="computer_vision">Computer Vision</option>
+                <option value="other">Other (please provide details below)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="details">Workflow Details</label>
+              <textarea id="details" name="details" rows="4"
+                placeholder="Tell us more about your goals and constraints. The more information you provide, the better we can tailor the solution for your needs."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="checkbox-group">
+                <input type="checkbox" id="softwareStack" name="softwareStack">
+                <label for="softwareStack">Pre-Configure Software Stack (Ubuntu, CUDA, Docker, PyTorch etc.)</label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="checkbox-group">
+                <input type="checkbox" id="ongoingSupport" name="ongoingSupport">
+                <label for="ongoingSupport">I am interested in ongoing active support and updates</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Request Custom Configuration</button>
+            <div id="formSuccess" class="form-success hidden">
+              Thank you! Our engineers will review your needs and contact you shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span>AI</span>RIGS</a>
+        <p>Precision-engineered AI workstations for the world's most demanding workloads.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">GPU Workstations</a></li>
+          <li><a href="#">Multi-GPU Systems</a></li>
+          <li><a href="#">Supercomputers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 AI Rigs. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>

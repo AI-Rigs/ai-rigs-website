@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="AI Rigs - High-performance AI workstations uniquely customized for your machine learning and deep learning workloads." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Solutions | AI Rigs</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <span>AI</span>RIGS
+      </a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="solutions.html">Solutions</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="contact.html" class="btn btn-primary">Contact us</a>
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Base Models -->
+  <section class="products" id="workstations">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Our Core Configurations</h2>
+        <p>High-performance base models, ready to be customized for your workload.</p>
+      </div>
+
+      <div class="catalog-header">
+
+        <div class="sort-control">
+          <label for="sort-by">Order by:</label>
+          <select id="sort-by">
+            <option value="popularity-desc" selected>Relevance</option>
+            <option value="price-asc">Price (Low to High)</option>
+            <option value="price-desc">Price (High to Low)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catalog-layout">
+        <!-- Sidebar Filters -->
+        <aside class="catalog-sidebar">
+          <div class="filter-section">
+            <h3 class="filter-title">Budget (€)</h3>
+            <div class="budget-inputs">
+              <input type="number" id="min-budget" value="2500" min="2500" max="50000" step="500">
+              <span>-</span>
+              <input type="number" id="max-budget" value="50000" min="2500" max="50000" step="500">
+            </div>
+            <div class="range-slider-wrapper">
+              <div class="range-slider-track" id="slider-track"></div>
+              <input type="range" id="budget-slider-min" class="dual-range" min="2500" max="50000" step="500"
+                value="2500">
+              <input type="range" id="budget-slider-max" class="dual-range" min="2500" max="50000" step="500"
+                value="50000">
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3 class="filter-title">
+              Use cases
+              <button id="reset-use-cases" class="reset-btn" title="Reset all use cases">Reset</button>
+            </h3>
+            <div class="checkbox-group">
+              <input type="checkbox" id="uc-agentic" value="textual" class="use-case-cb">
+              <label for="uc-agentic">Agentic software development</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="uc-video" value="visual" class="use-case-cb">
+              <label for="uc-video">Video/image generation</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="uc-doc" value="textual" class="use-case-cb">
+              <label for="uc-doc">Document analysis/summarization</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="uc-chatbot" value="textual,audio" class="use-case-cb">
+              <label for="uc-chatbot">Chatbots</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="uc-obj" value="visual" class="use-case-cb">
+              <label for="uc-obj">Object detection/recognition</label>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3 class="filter-title">Deployment type</h3>
+            <select id="concurrent-users" class="filter-select">
+              <option value="single">Experimentation/POC</option>
+              <option value="multiple">Production</option>
+            </select>
+          </div>
+        </aside>
+
+        <!-- Main Products Content -->
+        <div class="catalog-main">
+
+          <div class="products-grid" id="products-grid">
+            <!-- Product 1: AMD Ryzen AI Max+ -->
+            <div class="product-card" data-price="3000" data-popularity="85" data-modality="textual">
+              <div class="product-image">
+                <img src="./assets/images/amd_ryzen_ai_max.png" alt="AMD Ryzen AI Max+ 395 Strix Halo mini-PC"
+                  class="product-img">
+              </div>
+              <div class="product-content">
+                <h3>AMD Ryzen AI Max+ 395 (Strix Halo)</h3>
+                <p>Compact AI workstation featuring unified memory architecture, ideal for running local LLMs and daily
+                  operations.</p>
+                <ul class="product-specs">
+                  <li><strong>Memory capacity: </strong>Up to 128GB LPDDR5X (unified)</li>
+                  <li><strong>Memory bandwidth: </strong>256 GB/s</li>
+                  <li><strong>Performance: </strong>126 TOPS INT8 (platform total)</li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag">From €3,000</span>
+                  <a href="index.html#lead-form" class="btn btn-outline">Make an Inquiry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2a: Mac Studio M4 Max -->
+            <div class="product-card" data-price="2500" data-popularity="95" data-modality="visual,textual,audio">
+              <div class="product-image chip-logo">
+                <img src="./assets/images/m4-max-wide.png" alt="Apple M4 Max" class="product-img">
+              </div>
+              <div class="product-content">
+                <h3>Mac Studio M4 Max</h3>
+                <p>Exceptional single-user AI performance in a compact form factor with the M4 Max chip and
+                  high-Memory bandwidth unified memory.</p>
+                <ul class="product-specs">
+                  <li><strong>Memory capacity: </strong>Up to 128GB Unified Memory</li>
+                  <li><strong>Memory bandwidth: </strong>546 GB/s</li>
+                  <li><strong>Performance: </strong>38 TOPS INT8 (Neural Engine)</li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag">From €2,500</span>
+                  <a href="index.html#lead-form" class="btn btn-outline">Make an Inquiry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2b: Mac Studio M3 Ultra -->
+            <div class="product-card" data-price="5000" data-popularity="90" data-modality="visual,textual,audio">
+              <div class="product-image chip-logo">
+                <img src="./assets/images/m3-ultra-wide.png" alt="Apple M3 Ultra" class="product-img">
+              </div>
+              <div class="product-content">
+                <h3>Mac Studio M3 Ultra</h3>
+                <p>Apple's most powerful desktop chip delivers workstation-class AI throughput with massive unified
+                  memory capacity.</p>
+                <ul class="product-specs">
+                  <li><strong>Memory capacity: </strong>Up to 512GB Unified Memory</li>
+                  <li><strong>Memory bandwidth: </strong>819 GB/s</li>
+                  <li><strong>Performance: </strong>36 TOPS INT8 (Neural Engine)</li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag">From €5,000</span>
+                  <a href="index.html#lead-form" class="btn btn-outline">Make an Inquiry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3: Nvidia GB10 -->
+            <div class="product-card highlight-card" data-price="4000" data-popularity="90"
+              data-modality="textual,visual">
+              <div class="product-image">
+                <img src="./assets/images/nvidia_gb10_dgx.png" alt="Nvidia GB10 DGX Spark AI Supercomputer"
+                  class="product-img">
+              </div>
+              <div class="product-content">
+                <h3>Nvidia GB10 (DGX Spark / Asus GX10)</h3>
+                <p>Compact AI supercomputer powered by the Grace Blackwell architecture. Designed for uncompromised
+                  compute density.</p>
+                <ul class="product-specs">
+                  <li><strong>Memory capacity: </strong>128GB LPDDR5X (unified)</li>
+                  <li><strong>Memory bandwidth: </strong>273 GB/s</li>
+                  <li><strong>Performance: </strong>~250 TOPS INT8 (dense, est.)</li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag">From €4,000</span>
+                  <a href="index.html#lead-form" class="btn btn-primary">Make an Inquiry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4: Single GPU -->
+            <div class="product-card" data-price="3500" data-popularity="80" data-modality="visual,textual">
+              <div class="product-image">
+                <img src="./assets/images/single_gpu_workstation.png" alt="Entry-Level Single GPU Workstation"
+                  class="product-img">
+              </div>
+              <div class="product-content">
+                <h3>Entry-Level Workstation</h3>
+                <p>Solid foundation for mixed workloads and deep learning prototyping featuring a high-end single GPU.
+                </p>
+                <ul class="product-specs">
+                  <li><strong>Memory capacity: </strong>24–72GB GDDR6/GDDR7</li>
+                  <li><strong>Memory bandwidth: </strong>456 GB/s</li>
+                  <li><strong>Performance: </strong>197 TOPS INT8 (Intel® Arc™ Pro B60)</li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag">From €3,500</span>
+                  <a href="index.html#lead-form" class="btn btn-outline">Make an Inquiry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 5: Dual GPU -->
+            <div class="product-card" data-price="6500" data-popularity="75" data-modality="visual,textual,audio">
+              <div class="product-image">
+                <img src="./assets/images/dual_gpu_workstation.png" alt="Mid-Range Dual GPU Workstation"
+                  class="product-img">
+              </div>
+              <div class="product-content">
+                <h3>Dual-GPU Workstation</h3>
+                <p>Accelerate training times and handle larger data operations effortlessly with dual GPU compute
+                  capabilities.</p>
+                <ul class="product-specs">
+                  <li><strong>Memory capacity: </strong>48–144GB GDDR6/GDDR7 (2× GPU)</li>
+                  <li><strong>Memory bandwidth: </strong>912 GB/s combined</li>
+                  <li><strong>Performance: </strong>394 TOPS INT8 (2× Arc™ Pro B60)</li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag">From €6,500</span>
+                  <a href="index.html#lead-form" class="btn btn-outline">Customize</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 6: Multi GPU -->
+            <div class="product-card" data-price="12000" data-popularity="70" data-modality="visual,textual,audio">
+              <div class="product-image">
+                <img src="./assets/images/multi_gpu_workstation.png" alt="Professional Multi-GPU Rig"
+                  class="product-img">
+              </div>
+              <div class="product-content">
+                <h3>Multi-GPU Workstation</h3>
+                <p>Highly scalable workstation base. Select your preferred GPUs post-consultation to maximize your
+                  organization's workflow.</p>
+                <ul class="product-specs">
+                  <li><strong>Memory capacity: </strong>96–288GB GDDR6/GDDR7 (4× GPU)</li>
+                  <li><strong>Memory bandwidth: </strong>1,824 GB/s combined</li>
+                  <li><strong>Performance: </strong>788 TOPS INT8 (4× Arc™ Pro B60)</li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag">From €12,000</span>
+                  <a href="index.html#lead-form" class="btn btn-outline">Make an Inquiry</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span>AI</span>RIGS</a>
+        <p>Precision-engineered AI workstations for the world's most demanding workloads.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">GPU Workstations</a></li>
+          <li><a href="#">Multi-GPU Systems</a></li>
+          <li><a href="#">Supercomputers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 AI Rigs. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
