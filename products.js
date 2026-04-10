@@ -3,15 +3,15 @@ export const productsData = [
     id: 'amd-strix-halo',
     title: 'AMD Ryzen AI Max+ 395 (Strix Halo)',
     description: 'Compact AI workstation featuring unified memory architecture, ideal for running local LLMs and daily operations.',
-    price: 3500,
+    price: 2800,
     relevance: 85,
     modality: 'textual',
     deployment: 'poc-only',
-    image: './assets/images/GMKtec-evox2.png',
+    image: './assets/images/Products/GMKtec-evox2.png',
     imageAlt: 'AMD Ryzen AI Max+ 395 Strix Halo mini-PC',
     isChipLogo: false,
     specs: {
-      memoryCapacity: '128GB Unified Memory',
+      memoryCapacity: 'Up to 128GB unified memory',
       memoryBandwidth: '256 GB/s',
       performance: 'Up to 126 TOPS (INT8)'
     }
@@ -24,11 +24,11 @@ export const productsData = [
     relevance: 95,
     modality: 'visual,textual,audio',
     deployment: 'poc-only',
-    image: './assets/images/m4-max-wide.png',
+    image: './assets/images/Products/m4-max-wide.png',
     imageAlt: 'Apple M4 Max',
     isChipLogo: true,
     specs: {
-      memoryCapacity: 'Up to 128GB Unified Memory',
+      memoryCapacity: 'Up to 128GB unified memory',
       memoryBandwidth: '546 GB/s',
       performance: '38 TOPS INT8 (Neural Engine)'
     }
@@ -41,7 +41,7 @@ export const productsData = [
     relevance: 90,
     modality: 'visual,textual,audio',
     deployment: 'poc-only',
-    image: './assets/images/m3-ultra-wide.png',
+    image: './assets/images/Products/m3-ultra-wide.png',
     imageAlt: 'Apple M3 Ultra',
     isChipLogo: true,
     specs: {
@@ -58,11 +58,11 @@ export const productsData = [
     relevance: 90,
     modality: 'textual,visual',
     deployment: 'poc-only',
-    image: './assets/images/nvidia_gb10_dgx.png',
+    image: './assets/images/Products/nvidia_gb10_dgx.png',
     imageAlt: 'Nvidia GB10 DGX Spark AI Supercomputer',
     isChipLogo: false,
     specs: {
-      memoryCapacity: '128GB Unified Memory (up to 256GB via stacking)',
+      memoryCapacity: '128 GB unified memory (up to 256GB via stacking)',
       memoryBandwidth: '273 GB/s',
       performance: '~250 TOPS INT8 (dense, est.)'
     }
@@ -75,7 +75,7 @@ export const productsData = [
     relevance: 80,
     modality: 'visual,textual',
     deployment: '',
-    image: './assets/images/single_gpu_workstation.png',
+    image: './assets/images/Products/single_gpu_workstation.png',
     imageAlt: 'Entry-Level Single GPU Workstation',
     isChipLogo: false,
     specs: {
@@ -92,7 +92,7 @@ export const productsData = [
     relevance: 75,
     modality: 'visual,textual,audio',
     deployment: '',
-    image: './assets/images/dual_gpu_workstation.png',
+    image: './assets/images/Products/dual_gpu_workstation.png',
     imageAlt: 'Mid-Range Dual GPU Workstation',
     isChipLogo: false,
     specs: {

@@ -405,4 +405,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // Offset Y's first run slightly to ensure they don't start together
     setTimeout(scheduleY, 2000);
   }
+
+  const hardwareBg = document.getElementById('hardware-images-bg');
+  if (hardwareBg) {
+    // Fixed arrangement to ensure consistency and no clipping/overlap
+    // Fixed arrangement for all 5 logos in the folder
+    const layout = [
+      { src: 'assets/images/Hardware/intel-arc-logo.webp', x: 30, y: 56 },
+      { src: 'assets/images/Hardware/ryzen-ai-max-logo.png', x: 74, y: 57 },
+      { src: 'assets/images/Hardware/mx_ultra__b7zrsiv2zomq_large.jpg', x: 52, y: 70 },
+      { src: 'assets/images/Hardware/nvidia-logo-vert-wht.png', x: 28, y: 82 },
+      { src: 'assets/images/Hardware/radeon-ai-pro-logo.avif', x: 72, y: 81 }
+    ];
+
+    layout.forEach((item) => {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.className = 'floating-hardware-img';
+      
+      img.style.left = `${item.x}%`;
+      img.style.top = `${item.y}%`;
+      // Fully static
+      img.style.transform = 'none';
+      img.style.animation = 'none';
+      
+      hardwareBg.appendChild(img);
+    });
+  }
 });
