@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = clone.querySelector('.product-card');
 
       card.dataset.price = product.price;
-      card.dataset.relevance = product.relevance;
       card.dataset.modality = product.modality;
       card.dataset.deployment = product.deployment;
 
@@ -269,7 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return {
           element: el,
           price: parseInt(el.dataset.price) || 0,
-          relevance: parseInt(el.dataset.relevance) || 0,
           modalities: (el.dataset.modality || '').split(',').map(s => s.trim()),
           deployment: el.dataset.deployment || ''
         };
@@ -295,8 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
       filtered.sort((a, b) => {
         if (sortBy === 'price-asc') return a.price - b.price;
         if (sortBy === 'price-desc') return b.price - a.price;
-        // relevance (default)
-        return b.relevance - a.relevance;
+        return 0; // Default no-op if no match
       });
 
       // Hide all products first
@@ -411,11 +408,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fixed arrangement to ensure consistency and no clipping/overlap
     // Fixed arrangement for all 5 logos in the folder
     const layout = [
-      { src: 'assets/images/Hardware/intel-arc-logo.webp', x: 30, y: 56 },
-      { src: 'assets/images/Hardware/ryzen-ai-max-logo.png', x: 74, y: 57 },
-      { src: 'assets/images/Hardware/mx_ultra__b7zrsiv2zomq_large.jpg', x: 52, y: 70 },
-      { src: 'assets/images/Hardware/nvidia-logo-vert-wht.png', x: 28, y: 82 },
-      { src: 'assets/images/Hardware/radeon-ai-pro-logo.avif', x: 72, y: 81 }
+      { src: 'assets/images/Hardware/intel-arc-logo.webp', x: 36, y: 52 },
+      { src: 'assets/images/Hardware/ryzen-ai-max-logo.png', x: 80, y: 53 },
+      { src: 'assets/images/Hardware/mx_ultra__b7zrsiv2zomq_large.jpg', x: 58, y: 66 },
+      { src: 'assets/images/Hardware/nvidia-logo-vert-wht.png', x: 34, y: 78 },
+      { src: 'assets/images/Hardware/radeon-ai-pro-logo.avif', x: 78, y: 77 }
     ];
 
     layout.forEach((item) => {
@@ -430,6 +427,31 @@ document.addEventListener('DOMContentLoaded', () => {
       img.style.animation = 'none';
       
       hardwareBg.appendChild(img);
+    });
+  }
+
+  const softwareBg = document.getElementById('software-images-bg');
+  if (softwareBg) {
+    const layout = [
+      { src: 'assets/images/Software/comfy-ui-logo.png', x: 35, y: 52 },
+      { src: 'assets/images/Software/vLLM-Logo.png', x: 79, y: 52 },
+      { src: 'assets/images/Software/unsloth-studio-logo.avif', x: 57, y: 61 },
+      { src: 'assets/images/Software/openclaw-dark.png', x: 32, y: 76 },
+      { src: 'assets/images/Software/opencode-logo-dark.png', x: 82, y: 76 },
+      { src: 'assets/images/Software/kilocode-logo.png', x: 57, y: 84 }
+    ];
+
+    layout.forEach((item) => {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.className = 'floating-software-img';
+      
+      img.style.left = `${item.x}%`;
+      img.style.top = `${item.y}%`;
+      img.style.transform = 'none';
+      img.style.animation = 'none';
+      
+      softwareBg.appendChild(img);
     });
   }
 });
