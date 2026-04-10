@@ -2,13 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle mock
   const menuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
-  
-  if(menuBtn && navLinks) {
+
+  if (menuBtn && navLinks) {
     menuBtn.addEventListener('click', () => {
       // Toggle logic would go here
       const isHidden = navLinks.style.display === 'none' || navLinks.style.display === '';
       navLinks.style.display = isHidden ? 'flex' : 'none';
-      if(isHidden) {
+      if (isHidden) {
         navLinks.style.flexDirection = 'column';
         navLinks.style.position = 'absolute';
         navLinks.style.top = '100%';
@@ -40,14 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       // Get form data
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-      
+
       // In a real app, this would be sent to an API endpoint
       console.log('Lead Generation Data:', data);
-      
+
       // Simulate API call
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
-        
+
         // Show success message
         successMsg.classList.remove('hidden');
-        
+
         // Hide after 5 seconds
         setTimeout(() => {
           successMsg.classList.add('hidden');
@@ -74,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const productsGrid = document.getElementById('products-grid');
   if (productsGrid) {
     const products = Array.from(productsGrid.querySelectorAll('.product-card'));
-    
+
     // Sort logic
     const sortSelect = document.getElementById('sort-by');
-    
+
     // Filter controls
     const minBudgetInput = document.getElementById('min-budget');
     const maxBudgetInput = document.getElementById('max-budget');
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamically set minimum budget based on the cheapest product
     const minPrice = products.length > 0 ? Math.min(...products.map(p => parseInt(p.dataset.price) || 0)) : 0;
-    
+
     if (minBudgetInput) {
       minBudgetInput.min = minPrice;
       minBudgetInput.value = minPrice;
@@ -114,11 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const maxVal = parseInt(budgetSliderMax.value);
       const limitMin = parseInt(budgetSliderMin.min) || 0;
       const limitMax = parseInt(budgetSliderMax.max) || 50000;
-      
+
       const range = limitMax - limitMin;
       const leftPercent = ((minVal - limitMin) / range) * 100;
       const rightPercent = 100 - ((maxVal - limitMin) / range) * 100;
-      
+
       sliderTrack.style.left = leftPercent + '%';
       sliderTrack.style.right = rightPercent + '%';
     }
@@ -159,9 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
           maxVal = minVal;
         }
       }
-      
-      if(minVal < limitMin) minVal = limitMin;
-      if(maxVal > maxRange) maxVal = maxRange;
+
+      if (minVal < limitMin) minVal = limitMin;
+      if (maxVal > maxRange) maxVal = maxRange;
 
       budgetSliderMin.value = minVal;
       budgetSliderMax.value = maxVal;
@@ -192,25 +192,32 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    const deploymentSelect = document.getElementById('concurrent-users');
+    if (deploymentSelect) {
+      deploymentSelect.addEventListener('change', applyFiltersAndSort);
+    }
+
     sortSelect.addEventListener('change', applyFiltersAndSort);
 
     function applyFiltersAndSort() {
       const limitMin = parseInt(budgetSliderMin.min) || 0;
       const minBudget = parseInt(minBudgetInput.value) || limitMin;
       const maxBudget = parseInt(maxBudgetInput.value) || Infinity;
-      
+
       const selectedMods = Array.from(modalityCheckboxes)
         .filter(cb => cb.checked)
         .flatMap(cb => cb.value.split(','));
 
       const sortBy = sortSelect.value;
-      
+      const deploymentType = deploymentSelect ? deploymentSelect.value : 'single';
+
       const productData = products.map(el => {
         return {
           element: el,
           price: parseInt(el.dataset.price) || 0,
-          popularity: parseInt(el.dataset.popularity) || 0,
-          modalities: (el.dataset.modality || '').split(',').map(s => s.trim())
+          relevance: parseInt(el.dataset.relevance) || 0,
+          modalities: (el.dataset.modality || '').split(',').map(s => s.trim()),
+          deployment: el.dataset.deployment || ''
         };
       });
 
@@ -221,7 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedMods.length > 0) {
           inModality = p.modalities.some(m => selectedMods.includes(m));
         }
-        return inBudget && inModality;
+
+        let inDeployment = true;
+        if (deploymentType === 'multiple') {
+          inDeployment = p.deployment !== 'poc-only';
+        }
+
+        return inBudget && inModality && inDeployment;
       });
 
       // Sort
@@ -229,12 +242,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sortBy === 'price-asc') return a.price - b.price;
         if (sortBy === 'price-desc') return b.price - a.price;
         // relevance (default)
-        return b.popularity - a.popularity;
+        return b.relevance - a.relevance;
       });
 
       // Hide all products first
       products.forEach(p => p.classList.add('hidden'));
-      
+
       // Re-append filtered products to change their visual order
       filtered.forEach(p => {
         p.element.classList.remove('hidden');
