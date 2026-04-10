@@ -105,9 +105,11 @@
               Deployment type
               <div class="tooltip-wrapper">
                 <span class="tooltip-icon">?</span>
-                <div class="tooltip-content"><b>Experimentation/POC:</b> Validation of ideas — model speed and
-                  output quality are not a priority.<br><br>
-                  <b>Production:</b><br>User-facing workloads — sufficient balance between model performance and output
+                <div class="tooltip-content"><b>Experimentation/POC</b><br>For validation of ideas — choose between
+                  prioritizing model speed or output quality.<br><br>
+                  <b>Production</b><br>For user-facing workloads — provides sufficient balance between model
+                  performance and
+                  output
                   quality.
                 </div>
               </div>
@@ -123,184 +125,41 @@
         <div class="catalog-main">
 
           <div class="products-grid" id="products-grid">
-            <!-- Product 1: AMD Ryzen AI Max+ -->
-            <div class="product-card" data-price="3000" data-relevance="85" data-modality="textual"
-              data-deployment="poc-only">
-              <div class="product-image">
-                <img src="./assets/images/GMKtec-evox2.png" alt="AMD Ryzen AI Max+ 395 Strix Halo mini-PC"
-                  class="product-img">
-              </div>
-              <div class="product-content">
-                <h3>AMD Ryzen AI Max+ 395 (Strix Halo)</h3>
-                <p>Compact AI workstation featuring unified memory architecture, ideal for running local LLMs and daily
-                  operations.</p>
-                <ul class="product-specs">
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory capacity</span><span
-                          class="tooltip-content">Dictates the maximum model size (e.g., 8B vs. 70B) and maximum context
-                          length you can load into the system.</span></span>: </strong>128GB Unified Memory</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory bandwidth</span><span
-                          class="tooltip-content">The primary factor determining how many tokens per second (TPS) the
-                          model generates</span></span>: </strong>256 GB/s</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Performance</span><span
-                          class="tooltip-content">The system's raw computational power - higher TOPS reduce the "Time
-                          to First Token" when processing long prompts.</span></span>: </strong>Up to 126 TOPS INT8</li>
-                </ul>
-                <div class="product-footer">
-                  <span class="price-tag">From €3,500</span>
-                  <a href="contact.html" class="btn btn-primary">Request Details</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product 2a: Mac Studio M4 Max -->
-            <div class="product-card" data-price="2500" data-relevance="95" data-modality="visual,textual,audio"
-              data-deployment="poc-only">
-              <div class="product-image chip-logo">
-                <img src="./assets/images/m4-max-wide.png" alt="Apple M4 Max" class="product-img">
-              </div>
-              <div class="product-content">
-                <h3>Mac Studio M4 Max</h3>
-                <p>Exceptional single-user AI performance in a compact form factor with the M4 Max chip and
-                  high-Memory bandwidth unified memory.</p>
-                <ul class="product-specs">
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory capacity</span><span
-                          class="tooltip-content">Dictates the maximum model size (e.g., 8B vs. 70B) and maximum context
-                          length you can load into the system.</span></span>: </strong>Up to 128GB Unified Memory</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory bandwidth</span><span
-                          class="tooltip-content">The primary factor determining how many tokens per second (TPS) the
-                          model generates</span></span>: </strong>546 GB/s</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Performance</span><span
-                          class="tooltip-content">The system's raw computational power - higher TOPS reduce the "Time
-                          to First
-                          Token" when processing long prompts.</span></span>: </strong>38 TOPS INT8 (Neural Engine)</li>
-                </ul>
-                <div class="product-footer">
-                  <span class="price-tag">From €2,500</span>
-                  <a href="contact.html" class="btn btn-primary">Request Details</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product 2b: Mac Studio M3 Ultra -->
-            <div class="product-card" data-price="5000" data-relevance="90" data-modality="visual,textual,audio"
-              data-deployment="poc-only">
-              <div class="product-image chip-logo">
-                <img src="./assets/images/m3-ultra-wide.png" alt="Apple M3 Ultra" class="product-img">
-              </div>
-              <div class="product-content">
-                <h3>Mac Studio M3 Ultra</h3>
-                <p>Apple's most powerful desktop chip delivers workstation-class AI throughput with massive unified
-                  memory capacity.</p>
-                <ul class="product-specs">
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory capacity</span><span
-                          class="tooltip-content">Dictates the maximum model size (e.g., 8B vs. 70B) and maximum context
-                          length you can load into the system.</span></span>: </strong>Up to 256GB Unified Memory</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory bandwidth</span><span
-                          class="tooltip-content">The primary factor determining how many tokens per second (TPS) the
-                          model generates</span></span>: </strong>819 GB/s</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Performance</span><span
-                          class="tooltip-content">The system's raw computational power - higher TOPS reduce the "Time
-                          to First
-                          Token" when processing long prompts.</span></span>: </strong>36 TOPS INT8 (Neural Engine)</li>
-                </ul>
-                <div class="product-footer">
-                  <span class="price-tag">From €5,000</span>
-                  <a href="contact.html" class="btn btn-primary">Request Details</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product 3: Nvidia GB10 -->
-            <div class="product-card" data-price="4000" data-relevance="90" data-modality="textual,visual"
-              data-deployment="poc-only">
-              <div class="product-image">
-                <img src="./assets/images/nvidia_gb10_dgx.png" alt="Nvidia GB10 DGX Spark AI Supercomputer"
-                  class="product-img">
-              </div>
-              <div class="product-content">
-                <h3>Nvidia GB10 (DGX Spark / Asus GX10)</h3>
-                <p>Compact AI supercomputer powered by the Grace Blackwell architecture. Designed for uncompromised
-                  compute density.</p>
-                <ul class="product-specs">
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory capacity</span><span
-                          class="tooltip-content">Dictates the maximum model size (e.g., 8B vs. 70B) and maximum context
-                          length you can load into the system.</span></span>: </strong>128GB Unified Memory (up to 256GB
-                    via stacking)</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory bandwidth</span><span
-                          class="tooltip-content">The primary factor determining how many tokens per second (TPS) the
-                          model generates</span></span>: </strong>273 GB/s</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Performance</span><span
-                          class="tooltip-content">The system's raw computational power - higher TOPS reduce the "Time
-                          to First
-                          Token" when processing long prompts.</span></span>: </strong>~250 TOPS INT8 (dense, est.)</li>
-                </ul>
-                <div class="product-footer">
-                  <span class="price-tag">From €4,000</span>
-                  <a href="contact.html" class="btn btn-primary">Request Details</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product 4: Single GPU -->
-            <div class="product-card" data-price="3500" data-relevance="80" data-modality="visual,textual">
-              <div class="product-image">
-                <img src="./assets/images/single_gpu_workstation.png" alt="Entry-Level Single GPU Workstation"
-                  class="product-img">
-              </div>
-              <div class="product-content">
-                <h3>Single-GPU Workstation</h3>
-                <p>Solid foundation for mixed workloads and deep learning prototyping featuring a high-end single GPU.
-                </p>
-                <ul class="product-specs">
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory capacity</span><span
-                          class="tooltip-content">Dictates the maximum model size (e.g., 8B vs. 70B) and maximum context
-                          length you can load into the system.</span></span>: </strong>Up to 96GB GDDR7</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory bandwidth</span><span
-                          class="tooltip-content">The primary factor determining how many tokens per second (TPS) the
-                          model generates</span></span>: </strong>Up to 1792 GB/s</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Performance</span><span
-                          class="tooltip-content">The system's raw computational power - higher TOPS reduce the "Time
-                          to First
-                          Token" when processing long prompts.</span></span>: </strong>Up to 4000 TOPS (FP4 with
-                    sparsity)</li>
-                </ul>
-                <div class="product-footer">
-                  <span class="price-tag">From €3,500</span>
-                  <a href="contact.html" class="btn btn-primary">Request Details</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product 5: Dual GPU -->
-            <div class="product-card" data-price="6500" data-relevance="75" data-modality="visual,textual,audio">
-              <div class="product-image">
-                <img src="./assets/images/dual_gpu_workstation.png" alt="Mid-Range Dual GPU Workstation"
-                  class="product-img">
-              </div>
-              <div class="product-content">
-                <h3>Dual-GPU Workstation</h3>
-                <p>Accelerate training times and handle larger data operations effortlessly with dual GPU compute
-                  capabilities.</p>
-                <ul class="product-specs">
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory capacity</span><span
-                          class="tooltip-content">Dictates the maximum model size (e.g., 8B vs. 70B) and maximum context
-                          length you can load into the system.</span></span>: </strong>Up to 192GB GDDR7 (combined)</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Memory bandwidth</span><span
-                          class="tooltip-content">The primary factor determining how many tokens per second (TPS) the
-                          model generates</span></span>: </strong>Up to 3584 GB/s (combined)</li>
-                  <li><strong><span class="spec-tooltip"><span style="white-space: nowrap;">Performance</span><span
-                          class="tooltip-content">The system's raw computational power - higher TOPS reduce the "Time
-                          to First
-                          Token" when processing long prompts.</span></span>: </strong>Up to 8000 TOPS (FP4 with
-                    sparsity, combined)</li>
-                </ul>
-                <div class="product-footer">
-                  <span class="price-tag">From €6,500</span>
-                  <a href="contact.html" class="btn btn-primary">Request Details</a>
-                </div>
-              </div>
-            </div>
+            <!-- Products will be dynamically rendered here -->
           </div>
+
+          <!-- Product Card Template -->
+          <template id="product-card-template">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="" alt="" class="product-img">
+              </div>
+              <div class="product-content">
+                <h3 class="product-title"></h3>
+                <p class="product-description"></p>
+                <ul class="product-specs">
+                  <li data-spec="memoryCapacity"></li>
+                  <li data-spec="memoryBandwidth"></li>
+                  <li data-spec="performance"></li>
+                </ul>
+                <div class="product-footer">
+                  <span class="price-tag"></span>
+                  <a href="contact.html" class="btn btn-primary">Request Details</a>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <!-- Spec Tooltip Template -->
+          <template id="spec-tooltip-template">
+            <strong>
+              <span class="spec-tooltip">
+                <span class="spec-label" style="white-space: nowrap;"></span>
+                <span class="tooltip-content"></span>
+              </span>:
+            </strong>
+            <span class="spec-value"></span>
+          </template>
         </div>
       </div>
     </div>

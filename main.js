@@ -1,3 +1,5 @@
+import { productsData, specDefinitions } from './products.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle mock
   const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -70,10 +72,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function renderProducts(data) {
+    const grid = document.getElementById('products-grid');
+    const template = document.getElementById('product-card-template');
+    const specTemplate = document.getElementById('spec-tooltip-template');
+    if (!grid || !template) return;
+
+    grid.innerHTML = '';
+    data.forEach(product => {
+      const clone = template.content.cloneNode(true);
+      const card = clone.querySelector('.product-card');
+
+      card.dataset.price = product.price;
+      card.dataset.relevance = product.relevance;
+      card.dataset.modality = product.modality;
+      card.dataset.deployment = product.deployment;
+
+      const imgWrapper = clone.querySelector('.product-image');
+      if (product.isChipLogo) imgWrapper.classList.add('chip-logo');
+
+      const img = clone.querySelector('.product-img');
+      img.src = product.image;
+      img.alt = product.imageAlt;
+
+      clone.querySelector('.product-title').textContent = product.title;
+      clone.querySelector('.product-description').textContent = product.description;
+      
+      // Render specs dynamically using the spec template
+      const specList = clone.querySelector('.product-specs');
+      Object.keys(specDefinitions).forEach(specKey => {
+        const specItem = specList.querySelector(`[data-spec="${specKey}"]`);
+        if (specItem && specTemplate) {
+          const specClone = specTemplate.content.cloneNode(true);
+          const def = specDefinitions[specKey];
+          
+          specClone.querySelector('.spec-label').textContent = def.label;
+          specClone.querySelector('.tooltip-content').textContent = def.tooltip;
+          specClone.querySelector('.spec-value').textContent = product.specs[specKey];
+          
+          specItem.appendChild(specClone);
+        }
+      });
+
+      clone.querySelector('.price-tag').textContent = `From €${product.price.toLocaleString()}`;
+
+      grid.appendChild(clone);
+    });
+  }
+
+
   // --- Catalog Filter & Sort Logic ---
   const productsGrid = document.getElementById('products-grid');
   if (productsGrid) {
-    const products = Array.from(productsGrid.querySelectorAll('.product-card'));
+    // Initial render
+    renderProducts(productsData);
+
+    let products = Array.from(productsGrid.querySelectorAll('.product-card'));
 
     // Sort logic
     const sortSelect = document.getElementById('sort-by');
