@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       clone.querySelector('.product-title').textContent = product.title;
       clone.querySelector('.product-description').textContent = product.description;
-      
+
       // Render specs dynamically using the spec template
       const specList = clone.querySelector('.product-specs');
       Object.keys(specDefinitions).forEach(specKey => {
@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (specItem && specTemplate) {
           const specClone = specTemplate.content.cloneNode(true);
           const def = specDefinitions[specKey];
-          
+
           specClone.querySelector('.spec-label').textContent = def.label;
           specClone.querySelector('.tooltip-content').textContent = def.tooltip;
           specClone.querySelector('.spec-value').textContent = product.specs[specKey];
-          
+
           specItem.appendChild(specClone);
         }
       });
@@ -258,11 +258,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const maxBudget = parseInt(maxBudgetInput.value) || Infinity;
 
       const selectedMods = Array.from(modalityCheckboxes)
-        .filter(cb => cb.checked)
-        .flatMap(cb => cb.value.split(','));
+        .filter(cb => cb.checked);
+
+      const selectedModValues = selectedMods.flatMap(cb => cb.value.split(','));
 
       const sortBy = sortSelect.value;
       const deploymentType = deploymentSelect ? deploymentSelect.value : 'single';
+
+      // Update active filters UI
+      updateActiveFiltersUI(selectedMods, minBudget, maxBudget, deploymentType);
 
       const productData = products.map(el => {
         return {
@@ -277,8 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const filtered = productData.filter(p => {
         const inBudget = p.price >= minBudget && p.price <= maxBudget;
         let inModality = true;
-        if (selectedMods.length > 0) {
-          inModality = p.modalities.some(m => selectedMods.includes(m));
+        if (selectedModValues.length > 0) {
+          inModality = p.modalities.some(m => selectedModValues.includes(m));
         }
 
         let inDeployment = true;
@@ -304,6 +308,78 @@ document.addEventListener('DOMContentLoaded', () => {
         p.element.classList.remove('hidden');
         productsGrid.appendChild(p.element);
       });
+    }
+
+    function updateActiveFiltersUI(selectedMods, minBudget, maxBudget, deploymentType) {
+      const bar = document.getElementById('active-filters-bar');
+      if (!bar) return;
+
+      bar.innerHTML = '';
+
+      // If no quick filters are selected, show "Unspecified AI Workload"
+      if (selectedMods.length === 0) {
+        const span = document.createElement('span');
+        span.className = 'filter-tag default-tag';
+        span.textContent = 'Unspecified AI workload';
+        bar.appendChild(span);
+      } else {
+        selectedMods.forEach(cb => {
+          const label = cb.nextElementSibling.textContent;
+          const tag = document.createElement('div');
+          tag.className = 'filter-tag';
+          tag.innerHTML = `
+            ${label}
+            <button class="remove-filter">×</button>
+          `;
+          tag.addEventListener('click', () => {
+            cb.checked = false;
+            applyFiltersAndSort();
+          });
+          bar.appendChild(tag);
+        });
+      }
+
+      // Budget filter tag (only if changed from default)
+      const limitMin = parseInt(budgetSliderMin.min) || 2500;
+      const limitMax = parseInt(budgetSliderMax.max) || 50000;
+
+      if (minBudget > limitMin || maxBudget < limitMax) {
+        const tag = document.createElement('div');
+        tag.className = 'filter-tag';
+        tag.innerHTML = `
+          Budget: €${minBudget} - €${maxBudget}
+          <button class="remove-filter">×</button>
+        `;
+        tag.addEventListener('click', () => {
+          minBudgetInput.value = limitMin;
+          maxBudgetInput.value = limitMax;
+          budgetSliderMin.value = limitMin;
+          budgetSliderMax.value = limitMax;
+          updateSliderTrack();
+          applyFiltersAndSort();
+        });
+        bar.appendChild(tag);
+      }
+
+      // Deployment type
+      if (deploymentType === 'multiple') {
+        const tag = document.createElement('div');
+        tag.className = 'filter-tag';
+        tag.innerHTML = `
+          Production
+          <button class="remove-filter">×</button>
+        `;
+        tag.addEventListener('click', () => {
+          deploymentSelect.value = 'single';
+          applyFiltersAndSort();
+        });
+        bar.appendChild(tag);
+      } else {
+        const span = document.createElement('span');
+        span.className = 'filter-tag default-tag';
+        span.textContent = 'Experimentation/POC';
+        bar.appendChild(span);
+      }
     }
 
     // Initial sort
@@ -419,13 +495,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = document.createElement('img');
       img.src = item.src;
       img.className = 'floating-hardware-img';
-      
+
       img.style.left = `${item.x}%`;
       img.style.top = `${item.y}%`;
       // Fully static
       img.style.transform = 'none';
       img.style.animation = 'none';
-      
+
       hardwareBg.appendChild(img);
     });
   }
@@ -437,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { src: 'assets/images/Software/vLLM-Logo.png', x: 79, y: 52 },
       { src: 'assets/images/Software/unsloth-studio-logo.avif', x: 57, y: 61 },
       { src: 'assets/images/Software/openclaw-dark.png', x: 32, y: 76 },
-      { src: 'assets/images/Software/opencode-logo-dark.png', x: 82, y: 76 },
+      { src: 'assets/images/Software/ollama-logo.png', x: 82, y: 76 },
       { src: 'assets/images/Software/kilocode-logo.png', x: 57, y: 84 }
     ];
 
@@ -445,12 +521,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = document.createElement('img');
       img.src = item.src;
       img.className = 'floating-software-img';
-      
+
       img.style.left = `${item.x}%`;
       img.style.top = `${item.y}%`;
       img.style.transform = 'none';
       img.style.animation = 'none';
-      
+
       softwareBg.appendChild(img);
     });
   }

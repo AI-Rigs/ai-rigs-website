@@ -66,7 +66,7 @@ export const productsData = [
   {
     id: 'single-gpu',
     title: 'Single-GPU Workstation',
-    description: 'The most flexible option that can be tailored to a wide range of use cases.',
+    description: 'The most flexible choice with a wide range of customization options for any use case. Suitable for running small to medium sized models for individuals or a small team.',
     price: 3500,
     modality: 'visual,textual',
     deployment: '',

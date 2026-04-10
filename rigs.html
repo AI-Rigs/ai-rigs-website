@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-  <title>Solutions | AI Rigs</title>
+  <title>Explore Rigs | AI Rigs</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
       </a>
       <nav class="nav">
         <ul class="nav-links">
-          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="rigs.html">Rigs</a></li>
           <li><a href="software.html">Software</a></li>
           <li><a href="reliability.html">Reliability</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -46,6 +46,9 @@
   <section class="products" id="workstations">
     <div class="container">
       <div class="catalog-header">
+        <div class="active-filters-bar" id="active-filters-bar">
+          <!-- Filter tags will be managed by JS -->
+        </div>
 
         <div class="sort-control">
           <label for="sort-by">Order by:</label>
@@ -77,12 +80,12 @@
 
           <div class="filter-section">
             <h3 class="filter-title">
-              Use case
+              Quick filters
               <button id="reset-use-cases" class="reset-btn" title="Reset all use cases">Reset</button>
             </h3>
             <div class="checkbox-group">
               <input type="checkbox" id="uc-agentic" value="textual" class="use-case-cb">
-              <label for="uc-agentic">Agentic software development</label>
+              <label for="uc-agentic">Agentic engineering</label>
             </div>
             <div class="checkbox-group">
               <input type="checkbox" id="uc-video" value="visual" class="use-case-cb">
@@ -109,7 +112,7 @@
                 <span class="tooltip-icon">?</span>
                 <div class="tooltip-content"><b>Experimentation/POC</b><br>For validation of ideas — choose between
                   prioritizing model speed or output quality.<br><br>
-                  <b>Production</b><br>For user-facing workloads — provides sufficient balance between model
+                  <b>Production</b><br>For user-facing workloads — <br> a reasonable balance between model
                   performance and
                   output
                   quality.

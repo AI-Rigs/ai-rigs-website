@@ -800,9 +800,64 @@ h4 {
   flex-grow: 1;
 }
 
+.active-filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.filter-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: var(--accent-primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-tag:hover .remove-filter {
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.filter-tag .remove-filter {
+  pointer-events: none; /* Let clicks bubble to the parent tag */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-primary);
+  font-size: 0.75rem;
+  border: none;
+  transition: var(--transition);
+}
+
+.filter-tag.default-tag {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: var(--accent-primary);
+  cursor: default;
+}
+
+.filter-tag.default-tag:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
 .catalog-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
   gap: 1rem;
