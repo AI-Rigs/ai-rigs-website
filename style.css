@@ -75,8 +75,6 @@ h4 {
 
 .btn-primary:hover {
   background: var(--accent-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .btn-secondary {
@@ -87,7 +85,6 @@ h4 {
 
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -168,10 +165,14 @@ h4 {
   cursor: pointer;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* Hero Section */
 .hero {
   position: relative;
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   padding-top: 5rem;
@@ -215,28 +216,88 @@ h4 {
 }
 
 .hero-cta {
+  margin-top: 3rem;
   display: flex;
   gap: 1rem;
 }
 
 /* Banner Section */
 .banner-section {
-  padding: 2.5rem 0;
+  padding: 2rem 0;
   background: var(--bg-dark);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
 }
 
-.banner-section h2 {
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.banner-text {
-  font-size: 1rem;
-  color: var(--text-muted);
-  max-width: 800px;
+.banner-content-animated {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
   margin: 0 auto;
+  max-width: 1400px;
+}
+
+.banner-sentence {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Split the line at the center */
+  gap: 0.75rem;
+  align-items: baseline;
+  width: 100%;
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.prefix {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.dynamic-wrap {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.dynamic-word {
+  display: inline-block;
+  color: var(--accent-primary);
+  background: linear-gradient(to right, #10B981, #3B82F6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+  font-weight: 800;
+  vertical-align: baseline;
+}
+
+.dynamic-word.switching {
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  .banner-sentence {
+    font-size: 1.75rem;
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.25rem;
+  }
+
+  .prefix,
+  .dynamic-wrap {
+    text-align: center;
+  }
+
+  .banner-content-animated {
+    max-width: 100%;
+  }
 }
 
 /* Features */
@@ -247,6 +308,9 @@ h4 {
 
 .section-heading {
   margin-bottom: 2rem;
+}
+
+.catalog-section-heading {
   margin-left: calc(280px + 3rem);
 }
 
@@ -271,13 +335,6 @@ h4 {
   padding: 1.5rem;
   border-radius: 0.75rem;
   border: 1px solid var(--border-color);
-  transition: var(--transition);
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .feature-icon {
@@ -303,8 +360,8 @@ h4 {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .product-card {
@@ -322,7 +379,8 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.95rem 0.95rem 0 0; /* Slightly smaller to account for card border */
+  border-radius: 0.95rem 0.95rem 0 0;
+  /* Slightly smaller to account for card border */
   overflow: hidden;
 }
 
@@ -344,21 +402,25 @@ h4 {
 }
 
 .product-content {
-  padding: 2.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-height: 450px;
+  min-height: 400px;
 }
 
 .product-content h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  min-height: 3.5rem;
+  /* Consistency for multi-line titles */
 }
 
 .product-content p {
   color: var(--text-muted);
   margin-bottom: 1.5rem;
+  min-height: 4.5rem;
+  /* Consistency for multi-line descriptions */
 }
 
 .product-specs {
@@ -382,7 +444,10 @@ h4 {
 }
 
 .product-specs li strong {
-  margin-right: 0.3em;
+  display: inline-block;
+  flex: 0 0 160px;
+  /* Fixed width for labels to align values */
+  margin-right: 0.5rem;
 }
 
 /* Lead Section */
@@ -793,7 +858,8 @@ h4 {
   right: auto;
   transform: translateX(-50%);
   width: 280px;
-  white-space: normal; /* Allow text inside tooltip to wrap */
+  white-space: normal;
+  /* Allow text inside tooltip to wrap */
 }
 
 .spec-tooltip .tooltip-content::after {

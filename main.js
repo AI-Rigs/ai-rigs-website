@@ -258,4 +258,97 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial sort
     applyFiltersAndSort();
   }
+
+  // --- Banner Word Animation ---
+  const bannerX = document.getElementById('banner-x');
+  const bannerY = document.getElementById('banner-y');
+
+  if (bannerX && bannerY) {
+    const xValues = [
+      "cloud vendor lock-in",
+      "changing terms and conditions",
+      "shrinking rate limits"
+    ];
+    const yValues = [
+      "hardware and AI models",
+      "intellectual property",
+      "financial certainty",
+      "digital privacy"
+    ];
+
+    let xIndex = 0;
+    let yIndex = 0;
+
+    // Set initial values instantly
+    bannerX.textContent = xValues[xIndex];
+    bannerY.textContent = yValues[yIndex];
+
+    function nextX() {
+      bannerX.classList.add('switching');
+      setTimeout(() => {
+        xIndex = (xIndex + 1) % xValues.length;
+        bannerX.textContent = xValues[xIndex];
+        bannerX.classList.remove('switching');
+      }, 400);
+    }
+
+    function nextY() {
+      bannerY.classList.add('switching');
+      setTimeout(() => {
+        yIndex = (yIndex + 1) % yValues.length;
+        bannerY.textContent = yValues[yIndex];
+        bannerY.classList.remove('switching');
+      }, 400);
+    }
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    let lastTransitionTime = 0;
+    const minGap = 2500;
+
+    function nextXWithCoordination() {
+      const now = Date.now();
+      if (now - lastTransitionTime < minGap) {
+        // If too close, wait a bit and try again
+        setTimeout(nextXWithCoordination, 1000);
+        return;
+      }
+      nextX();
+      lastTransitionTime = Date.now();
+    }
+
+    function nextYWithCoordination() {
+      const now = Date.now();
+      if (now - lastTransitionTime < minGap) {
+        // If too close, wait a bit and try again
+        setTimeout(nextYWithCoordination, 1000);
+        return;
+      }
+      nextY();
+      lastTransitionTime = Date.now();
+    }
+
+    function scheduleX() {
+      const delay = getRandomInt(7000, 8000);
+      setTimeout(() => {
+        nextXWithCoordination();
+        scheduleX();
+      }, delay);
+    }
+
+    function scheduleY() {
+      const delay = getRandomInt(7000, 9500);
+      setTimeout(() => {
+        nextYWithCoordination();
+        scheduleY();
+      }, delay);
+    }
+
+    // Start the randomized cycles
+    scheduleX();
+    // Offset Y's first run slightly to ensure they don't start together
+    setTimeout(scheduleY, 2000);
+  }
 });
