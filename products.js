@@ -100,14 +100,14 @@ export const productsData = [
 export const specDefinitions = {
   memoryCapacity: {
     label: 'Memory capacity',
-    tooltip: 'Dictates the maximum model size (e.g., 8B vs. 70B) and maximum context length you can load into the system.'
+    tooltip: 'Higher memory capacity allows you to load larger models and have longer context windows. Bigger models are generally more reliable and produce better outputs.'
   },
   memoryBandwidth: {
     label: 'Memory bandwidth',
-    tooltip: 'The primary factor determining how many tokens per second (TPS) the model generates'
+    tooltip: 'Faster memory bandwidth improves the model output speed, measured in TPS (tokens per second).'
   },
   performance: {
     label: 'Performance',
-    tooltip: "The system's raw computational power - higher TOPS reduce the \"Time to First Token\" when processing long prompts."
+    tooltip: "Higher TOPS (raw compute power) reduce the \"Time to First Token\"(TTFT) when processing longer prompts or large datasets."
   }
 };

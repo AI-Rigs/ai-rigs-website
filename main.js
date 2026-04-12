@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const bar = document.getElementById('active-filters-bar');
       if (!bar) return;
 
-      bar.innerHTML = '';
+      bar.innerHTML = '<span class="active-filters-label">Active filters:</span>';
 
       // If no quick filters are selected, show "Unspecified AI Workload"
       if (selectedMods.length === 0) {
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bar.appendChild(tag);
       } else {
         const span = document.createElement('span');
-        span.className = 'filter-tag default-tag';
+        span.className = 'filter-tag status-tag';
         span.textContent = 'Experimentation/POC';
         bar.appendChild(span);
       }
@@ -392,15 +392,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (bannerX && bannerY) {
     const xValues = [
-      "cloud vendor lock-in",
+      "vendor lock-in",
       "changing terms and conditions",
-      "shrinking rate limits"
+      "shrinking rate limits",
+      "model regression",
+      "high congestion times"
     ];
     const yValues = [
-      "hardware and AI models",
-      "intellectual property",
-      "financial certainty",
-      "digital privacy"
+      "build environment",
+      "digital footprint",
+      "bottom line",
+      "process flow"
     ];
 
     let xIndex = 0;

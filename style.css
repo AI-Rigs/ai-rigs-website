@@ -122,9 +122,16 @@ h4 {
 
 .header-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 5rem;
+  gap: 2rem;
+}
+
+.header-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .logo {
@@ -133,6 +140,8 @@ h4 {
   color: var(--text-main);
   text-decoration: none;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
 }
 
 .logo span {
@@ -143,6 +152,7 @@ h4 {
   display: flex;
   list-style: none;
   gap: 2rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -807,6 +817,13 @@ h4 {
   align-items: center;
 }
 
+.active-filters-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 0.5rem;
+  font-size: 0.95rem;
+}
+
 .filter-tag {
   display: flex;
   align-items: center;
@@ -844,15 +861,24 @@ h4 {
 }
 
 .filter-tag.default-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-color);
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.filter-tag.status-tag {
   background: rgba(16, 185, 129, 0.1);
   border-color: rgba(16, 185, 129, 0.2);
   color: var(--accent-primary);
   cursor: default;
 }
 
-.filter-tag.default-tag:hover {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.2);
+.filter-tag.default-tag:hover,
+.filter-tag.status-tag:hover {
+  background: inherit;
+  border-color: inherit;
+  transform: none;
 }
 
 .catalog-header {
