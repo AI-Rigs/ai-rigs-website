@@ -10,9 +10,14 @@ export const productsData = [
     imageAlt: 'AMD Ryzen AI Max+ 395 Strix Halo mini-PC',
     isChipLogo: false,
     specs: {
-      memoryCapacity: 'Up to 128GB unified memory',
+      memoryCapacity: 'Up to 128 GB unified memory',
       memoryBandwidth: '256 GB/s',
       performance: 'Up to 126 TOPS (INT8)'
+    },
+    specValues: {
+      memoryCapacity: 128,
+      memoryBandwidth: 256,
+      performance: 126
     }
   },
   {
@@ -26,9 +31,14 @@ export const productsData = [
     imageAlt: 'Apple M4 Max',
     isChipLogo: true,
     specs: {
-      memoryCapacity: 'Up to 128GB unified memory',
+      memoryCapacity: 'Up to 128 GB unified memory',
       memoryBandwidth: '546 GB/s',
       performance: '38 TOPS INT8 (Neural Engine)'
+    },
+    specValues: {
+      memoryCapacity: 128,
+      memoryBandwidth: 546,
+      performance: 38
     }
   },
   {
@@ -42,9 +52,14 @@ export const productsData = [
     imageAlt: 'Apple M3 Ultra',
     isChipLogo: true,
     specs: {
-      memoryCapacity: 'Up to 256GB Unified Memory',
+      memoryCapacity: 'Up to 256 GB Unified Memory',
       memoryBandwidth: '819 GB/s',
       performance: '36 TOPS INT8 (Neural Engine)'
+    },
+    specValues: {
+      memoryCapacity: 256,
+      memoryBandwidth: 819,
+      performance: 36
     }
   },
   {
@@ -58,15 +73,20 @@ export const productsData = [
     imageAlt: 'Nvidia GB10 DGX Spark AI Supercomputer',
     isChipLogo: false,
     specs: {
-      memoryCapacity: '128 GB unified memory (up to 256GB via stacking)',
-      memoryBandwidth: '273 GB/s',
+      memoryCapacity: '128 GB unified memory (up to 256 GB via stacking)',
+      memoryBandwidth: 'Up to 273 GB/s',
       performance: '~250 TOPS INT8 (dense, est.)'
+    },
+    specValues: {
+      memoryCapacity: 256,
+      memoryBandwidth: 273,
+      performance: 250
     }
   },
   {
     id: 'single-gpu',
     title: 'Single-GPU Workstation',
-    description: 'The most flexible choice with a wide range of customization options for any use case. Suitable for running small to medium sized models for individuals or a small team.',
+    description: 'Highly customizable for any use case, with good future upgradability options. Suited for running small to medium sized AI models for individuals or a small team.',
     price: 3500,
     modality: 'visual,textual',
     deployment: '',
@@ -74,15 +94,20 @@ export const productsData = [
     imageAlt: 'Entry-Level Single GPU Workstation',
     isChipLogo: false,
     specs: {
-      memoryCapacity: 'Up to 96GB GDDR7',
+      memoryCapacity: 'Up to 96 GB GDDR7',
       memoryBandwidth: 'Up to 1792 GB/s',
       performance: 'Up to 4000 TOPS (FP4 with sparsity)'
+    },
+    specValues: {
+      memoryCapacity: 96,
+      memoryBandwidth: 1792,
+      performance: 4000
     }
   },
   {
     id: 'dual-gpu',
     title: 'Dual-GPU Workstation',
-    description: 'Accelerate training times and handle larger data operations effortlessly with dual GPU compute capabilities.',
+    description: 'A cost-effective solution for more demanding tasks that don\'t require a full enterprise server. Suited for running medium to medium-large sized AI models for individuals or a small team.',
     price: 6500,
     modality: 'visual,textual,audio',
     deployment: '',
@@ -90,9 +115,14 @@ export const productsData = [
     imageAlt: 'Mid-Range Dual GPU Workstation',
     isChipLogo: false,
     specs: {
-      memoryCapacity: 'Up to 192GB GDDR7 (combined)',
+      memoryCapacity: 'Up to 192 GB GDDR7 (combined)',
       memoryBandwidth: 'Up to 3584 GB/s (combined)',
       performance: 'Up to 8000 TOPS (FP4 with sparsity, combined)'
+    },
+    specValues: {
+      memoryCapacity: 192,
+      memoryBandwidth: 3584,
+      performance: 8000
     }
   }
 ];
@@ -100,14 +130,14 @@ export const productsData = [
 export const specDefinitions = {
   memoryCapacity: {
     label: 'Memory capacity',
-    tooltip: 'Higher memory capacity allows you to load larger models and have longer context windows. Bigger models are generally more reliable and produce better outputs.'
+    tooltip: 'Higher memory capacity allows you to load larger models and have longer context windows. Bigger models are generally more capable and produce better outputs.'
   },
   memoryBandwidth: {
     label: 'Memory bandwidth',
     tooltip: 'Faster memory bandwidth improves the model output speed, measured in TPS (tokens per second).'
   },
   performance: {
-    label: 'Performance',
-    tooltip: "Higher TOPS (raw compute power) reduce the \"Time to First Token\"(TTFT) when processing longer prompts or large datasets."
+    label: 'Compute power',
+    tooltip: "Higher compute power reduces the \"Time to First Token\" (TTFT) when processing long prompts or large documents."
   }
 };

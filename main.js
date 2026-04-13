@@ -79,13 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!grid || !template) return;
 
     grid.innerHTML = '';
-    data.forEach(product => {
+    data.forEach((product, index) => {
       const clone = template.content.cloneNode(true);
       const card = clone.querySelector('.product-card');
 
+      card.dataset.relevance = index;
       card.dataset.price = product.price;
       card.dataset.modality = product.modality;
       card.dataset.deployment = product.deployment;
+      card.dataset.id = product.id;
+      card.dataset.memoryCapacity = product.specValues.memoryCapacity;
+      card.dataset.memoryBandwidth = product.specValues.memoryBandwidth;
+      card.dataset.performance = product.specValues.performance;
 
       const imgWrapper = clone.querySelector('.product-image');
       if (product.isChipLogo) imgWrapper.classList.add('chip-logo');
@@ -139,25 +144,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderTrack = document.getElementById('slider-track');
     const modalityCheckboxes = document.querySelectorAll('.use-case-cb');
 
-    // Dynamically set minimum budget based on the cheapest product
-    const minPrice = products.length > 0 ? Math.min(...products.map(p => parseInt(p.dataset.price) || 0)) : 0;
+    // Dynamically set budget boundaries based on products
+    const prices = products.map(p => parseInt(p.dataset.price) || 0);
+    const minPrice = products.length > 0 ? Math.min(...prices) : 2500;
+    const maxPrice = products.length > 0 ? Math.max(...prices) : 50000;
 
     if (minBudgetInput) {
       minBudgetInput.min = minPrice;
+      minBudgetInput.max = maxPrice;
       minBudgetInput.value = minPrice;
       minBudgetInput.step = 500;
     }
     if (maxBudgetInput) {
       maxBudgetInput.min = minPrice;
+      maxBudgetInput.max = maxPrice;
+      maxBudgetInput.value = maxPrice;
       maxBudgetInput.step = 500;
     }
     if (budgetSliderMin) {
       budgetSliderMin.min = minPrice;
+      budgetSliderMin.max = maxPrice;
       budgetSliderMin.value = minPrice;
       budgetSliderMin.step = 500;
     }
     if (budgetSliderMax) {
       budgetSliderMax.min = minPrice;
+      budgetSliderMax.max = maxPrice;
+      budgetSliderMax.value = maxPrice;
       budgetSliderMax.step = 500;
     }
 
@@ -180,13 +193,15 @@ document.addEventListener('DOMContentLoaded', () => {
       let minVal = parseInt(budgetSliderMin.value);
       let maxVal = parseInt(budgetSliderMax.value);
 
-      if (minVal > maxVal) {
+      const minGap = 500;
+
+      if (maxVal - minVal < minGap) {
         if (e.target.id === 'budget-slider-min') {
-          budgetSliderMin.value = maxVal;
-          minVal = maxVal;
+          budgetSliderMin.value = maxVal - minGap;
+          minVal = maxVal - minGap;
         } else {
-          budgetSliderMax.value = minVal;
-          maxVal = minVal;
+          budgetSliderMax.value = minVal + minGap;
+          maxVal = minVal + minGap;
         }
       }
 
@@ -203,13 +218,13 @@ document.addEventListener('DOMContentLoaded', () => {
       let maxVal = parseInt(maxBudgetInput.value) || limitMin;
       const maxRange = parseInt(budgetSliderMax.max) || 50000;
 
-      if (minVal > maxVal) {
+      const minGap = 500;
+
+      if (maxVal - minVal < minGap) {
         if (e.target.id === 'min-budget') {
-          minBudgetInput.value = maxVal;
-          minVal = maxVal;
+          minVal = maxVal - minGap;
         } else {
-          maxBudgetInput.value = minVal;
-          maxVal = minVal;
+          maxVal = minVal + minGap;
         }
       }
 
@@ -232,38 +247,125 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     modalityCheckboxes.forEach(cb => {
-      cb.addEventListener('change', () => {
+      cb.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          modalityCheckboxes.forEach(otherCb => {
+            if (otherCb !== e.target) otherCb.checked = false;
+          });
+        }
         applyFiltersAndSort();
       });
     });
 
-    const resetUseCasesBtn = document.getElementById('reset-use-cases');
-    if (resetUseCasesBtn) {
-      resetUseCasesBtn.addEventListener('click', () => {
-        modalityCheckboxes.forEach(cb => cb.checked = false);
+
+
+     const deploymentCheckboxes = document.querySelectorAll('.deployment-cb');
+     let previousDeploymentType = null;
+     deploymentCheckboxes.forEach(cb => {
+      cb.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          deploymentCheckboxes.forEach(otherCb => {
+            if (otherCb !== e.target) otherCb.checked = false;
+          });
+        }
         applyFiltersAndSort();
       });
-    }
-
-    const deploymentSelect = document.getElementById('concurrent-users');
-    if (deploymentSelect) {
-      deploymentSelect.addEventListener('change', applyFiltersAndSort);
-    }
+    });
 
     sortSelect.addEventListener('change', applyFiltersAndSort);
+
+    function calculateUseCaseRelevance(product, useCaseId) {
+      const mem = product.memoryCapacity;
+      const bw = product.memoryBandwidth;
+      const comp = product.performance;
+
+      switch (useCaseId) {
+        case 'uc-finetune': // memory capacity > compute > bandwidth
+          return mem * 1000000 + comp * 1000 + bw;
+        case 'uc-agentic': // memory > bandwidth > compute
+          return mem * 1000000 + bw * 1000 + comp;
+        case 'uc-chatbot': // bandwidth > memory > compute
+          return bw * 1000000 + mem * 1000 + comp;
+        case 'uc-doc': // memory > bandwidth > compute
+          return mem * 1000000 + bw * 1000 + comp;
+        case 'uc-obj': // compute > bandwidth > memory
+          return comp * 1000000 + bw * 1000 + mem;
+        case 'uc-video': // compute > memory > bandwidth
+          return comp * 1000000 + mem * 1000 + bw;
+        default:
+          return mem + bw + comp;
+      }
+    }
 
     function applyFiltersAndSort() {
       const limitMin = parseInt(budgetSliderMin.min) || 0;
       const minBudget = parseInt(minBudgetInput.value) || limitMin;
       const maxBudget = parseInt(maxBudgetInput.value) || Infinity;
 
+      const sortBy = sortSelect.value;
+      const checkedDep = Array.from(deploymentCheckboxes).find(cb => cb.checked);
+      const deploymentType = checkedDep ? checkedDep.value : 'single';
+
+       const isProduction = deploymentType === 'multiple';
+       
+       // If transitioning from Production to another deployment type, reset use case selections
+       if (previousDeploymentType === 'multiple' && deploymentType !== 'multiple') {
+         modalityCheckboxes.forEach(cb => {
+           cb.checked = false;
+         });
+       }
+
+      // When Production is selected, check all use-case checkboxes and lock them
+      modalityCheckboxes.forEach(cb => {
+        if (isProduction) {
+          cb.checked = true;
+          cb.disabled = true;
+          const group = cb.closest('.checkbox-group');
+          if (group) {
+            group.classList.add('locked');
+            group.classList.remove('dimmed');
+          }
+        } else {
+          cb.disabled = false;
+          const group = cb.closest('.checkbox-group');
+          if (group) {
+            group.classList.remove('locked');
+          }
+        }
+      });
+
       const selectedMods = Array.from(modalityCheckboxes)
         .filter(cb => cb.checked);
 
+      // Gray out other options if one is selected (skip when Production is active)
+      const anyModSelected = selectedMods.length > 0;
+      if (!isProduction) {
+        modalityCheckboxes.forEach(cb => {
+          const group = cb.closest('.checkbox-group');
+          if (group) {
+            if (anyModSelected && !cb.checked) {
+              group.classList.add('dimmed');
+            } else {
+              group.classList.remove('dimmed');
+            }
+          }
+        });
+      }
+
       const selectedModValues = selectedMods.flatMap(cb => cb.value.split(','));
 
-      const sortBy = sortSelect.value;
-      const deploymentType = deploymentSelect ? deploymentSelect.value : 'single';
+      // Deployment type dimming
+      const anyDepSelected = !!checkedDep;
+      deploymentCheckboxes.forEach(cb => {
+        const group = cb.closest('.checkbox-group');
+        if (group) {
+          if (anyDepSelected && !cb.checked) {
+            group.classList.add('dimmed');
+          } else {
+            group.classList.remove('dimmed');
+          }
+        }
+      });
 
       // Update active filters UI
       updateActiveFiltersUI(selectedMods, minBudget, maxBudget, deploymentType);
@@ -271,9 +373,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const productData = products.map(el => {
         return {
           element: el,
+          relevance: parseInt(el.dataset.relevance) || 0,
           price: parseInt(el.dataset.price) || 0,
           modalities: (el.dataset.modality || '').split(',').map(s => s.trim()),
-          deployment: el.dataset.deployment || ''
+          deployment: el.dataset.deployment || '',
+          id: el.dataset.id || '',
+          memoryCapacity: parseInt(el.dataset.memoryCapacity) || 0,
+          memoryBandwidth: parseInt(el.dataset.memoryBandwidth) || 0,
+          performance: parseInt(el.dataset.performance) || 0
         };
       });
 
@@ -295,9 +402,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Sort
       filtered.sort((a, b) => {
+        if (sortBy === 'relevance') {
+          // Check if POC is selected without a primary use case
+          const pocChecked = !!document.getElementById('dep-poc')?.checked;
+          const anyUseCaseSelected = selectedMods.length > 0;
+
+          if (pocChecked && !anyUseCaseSelected) {
+            const pocOrder = ['nvidia-gb10', 'amd-strix-halo', 'mac-studio-m4-max', 'mac-studio-m3-ultra', 'single-gpu', 'dual-gpu'];
+            return pocOrder.indexOf(a.id) - pocOrder.indexOf(b.id);
+          }
+
+          if (anyUseCaseSelected) {
+            const useCaseId = selectedMods[0]?.id;
+            const relA = calculateUseCaseRelevance(a, useCaseId);
+            const relB = calculateUseCaseRelevance(b, useCaseId);
+            return relB - relA;
+          }
+
+          // Default: sum of highest values per spec category
+          const relA = a.memoryCapacity + a.memoryBandwidth + a.performance;
+          const relB = b.memoryCapacity + b.memoryBandwidth + b.performance;
+          return relB - relA;
+        }
         if (sortBy === 'price-asc') return a.price - b.price;
         if (sortBy === 'price-desc') return b.price - a.price;
-        return 0; // Default no-op if no match
+        return 0;
       });
 
       // Hide all products first
@@ -308,78 +437,13 @@ document.addEventListener('DOMContentLoaded', () => {
         p.element.classList.remove('hidden');
         productsGrid.appendChild(p.element);
       });
+      
+      // Update previous deployment type for next iteration
+      previousDeploymentType = deploymentType;
     }
 
     function updateActiveFiltersUI(selectedMods, minBudget, maxBudget, deploymentType) {
-      const bar = document.getElementById('active-filters-bar');
-      if (!bar) return;
-
-      bar.innerHTML = '<span class="active-filters-label">Active filters:</span>';
-
-      // If no quick filters are selected, show "Unspecified AI Workload"
-      if (selectedMods.length === 0) {
-        const span = document.createElement('span');
-        span.className = 'filter-tag default-tag';
-        span.textContent = 'Unspecified AI workload';
-        bar.appendChild(span);
-      } else {
-        selectedMods.forEach(cb => {
-          const label = cb.nextElementSibling.textContent;
-          const tag = document.createElement('div');
-          tag.className = 'filter-tag';
-          tag.innerHTML = `
-            ${label}
-            <button class="remove-filter">×</button>
-          `;
-          tag.addEventListener('click', () => {
-            cb.checked = false;
-            applyFiltersAndSort();
-          });
-          bar.appendChild(tag);
-        });
-      }
-
-      // Budget filter tag (only if changed from default)
-      const limitMin = parseInt(budgetSliderMin.min) || 2500;
-      const limitMax = parseInt(budgetSliderMax.max) || 50000;
-
-      if (minBudget > limitMin || maxBudget < limitMax) {
-        const tag = document.createElement('div');
-        tag.className = 'filter-tag';
-        tag.innerHTML = `
-          Budget: €${minBudget} - €${maxBudget}
-          <button class="remove-filter">×</button>
-        `;
-        tag.addEventListener('click', () => {
-          minBudgetInput.value = limitMin;
-          maxBudgetInput.value = limitMax;
-          budgetSliderMin.value = limitMin;
-          budgetSliderMax.value = limitMax;
-          updateSliderTrack();
-          applyFiltersAndSort();
-        });
-        bar.appendChild(tag);
-      }
-
-      // Deployment type
-      if (deploymentType === 'multiple') {
-        const tag = document.createElement('div');
-        tag.className = 'filter-tag';
-        tag.innerHTML = `
-          Production
-          <button class="remove-filter">×</button>
-        `;
-        tag.addEventListener('click', () => {
-          deploymentSelect.value = 'single';
-          applyFiltersAndSort();
-        });
-        bar.appendChild(tag);
-      } else {
-        const span = document.createElement('span');
-        span.className = 'filter-tag status-tag';
-        span.textContent = 'Experimentation/POC';
-        bar.appendChild(span);
-      }
+      // Logic removed as per user request to remove the active filters bar
     }
 
     // Initial sort
@@ -395,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "vendor lock-in",
       "changing terms and conditions",
       "shrinking rate limits",
-      "model regression",
+      "AI model regression",
       "high congestion times"
     ];
     const yValues = [
@@ -486,11 +550,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fixed arrangement to ensure consistency and no clipping/overlap
     // Fixed arrangement for all 5 logos in the folder
     const layout = [
-      { src: 'assets/images/Hardware/intel-arc-logo.webp', x: 36, y: 52 },
-      { src: 'assets/images/Hardware/ryzen-ai-max-logo.png', x: 80, y: 53 },
-      { src: 'assets/images/Hardware/mx_ultra__b7zrsiv2zomq_large.jpg', x: 58, y: 66 },
-      { src: 'assets/images/Hardware/nvidia-logo-vert-wht.png', x: 34, y: 78 },
-      { src: 'assets/images/Hardware/radeon-ai-pro-logo.avif', x: 78, y: 77 }
+      { src: 'assets/images/Hardware/intel-arc-logo.webp', x: 31, y: 53 },
+      { src: 'assets/images/Hardware/ryzen-ai-max-logo.png', x: 81, y: 53 },
+      { src: 'assets/images/Hardware/mx_ultra__b7zrsiv2zomq_large.jpg', x: 56, y: 57 },
+      { src: 'assets/images/Hardware/nvidia-logo-vert-wht.png', x: 37, y: 79 },
+      { src: 'assets/images/Hardware/radeon-ai-pro-logo.avif', x: 67, y: 79 }
     ];
 
     layout.forEach((item) => {
@@ -512,11 +576,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (softwareBg) {
     const layout = [
       { src: 'assets/images/Software/comfy-ui-logo.png', x: 35, y: 52 },
-      { src: 'assets/images/Software/vLLM-Logo.png', x: 79, y: 52 },
-      { src: 'assets/images/Software/unsloth-studio-logo.avif', x: 57, y: 61 },
       { src: 'assets/images/Software/openclaw-dark.png', x: 32, y: 76 },
-      { src: 'assets/images/Software/ollama-logo.png', x: 82, y: 76 },
-      { src: 'assets/images/Software/kilocode-logo.png', x: 57, y: 84 }
+      { src: 'assets/images/Software/unsloth-studio-logo.avif', x: 61, y: 61 },
+      { src: 'assets/images/Software/lmstudio-logo.png', x: 86, y: 76 },
+      { src: 'assets/images/Software/vLLM-Logo.png', x: 82, y: 52 },
+      { src: 'assets/images/Software/ollama-logo.png', x: 59, y: 84 }
     ];
 
     layout.forEach((item) => {

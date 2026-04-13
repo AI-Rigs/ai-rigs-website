@@ -134,6 +134,10 @@ h4 {
   gap: 1rem;
 }
 
+.nav {
+  /* Dynamic margin removed, now inherited by logo shift */
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
@@ -142,6 +146,7 @@ h4 {
   letter-spacing: 1px;
   display: flex;
   align-items: center;
+  margin-left: 6vw;
 }
 
 .logo span {
@@ -592,6 +597,17 @@ h4 {
   margin-bottom: 1.5rem;
 }
 
+/* Remove spin buttons from number inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .custom-form label {
   display: block;
   margin-bottom: 0.5rem;
@@ -630,6 +646,16 @@ h4 {
   align-items: flex-start;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
+  transition: var(--transition);
+}
+
+.checkbox-group.dimmed {
+  opacity: 0.5;
+}
+
+.checkbox-group.locked label {
+  cursor: default;
+  pointer-events: none;
 }
 
 .checkbox-group:last-child {
@@ -642,6 +668,45 @@ h4 {
   height: 1.2rem;
   flex-shrink: 0;
   accent-color: var(--accent-primary);
+}
+
+/* Sidebar specific checkboxes as chips */
+.catalog-sidebar .checkbox-group {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.catalog-sidebar .checkbox-group:last-child {
+  margin-right: 0;
+}
+
+.catalog-sidebar .checkbox-group input[type="checkbox"] {
+  display: none;
+}
+
+.catalog-sidebar .checkbox-group label {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  display: inline-block;
+  user-select: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.catalog-sidebar .checkbox-group input[type="checkbox"]:checked + label {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-primary);
+}
+
+.catalog-sidebar .checkbox-group:hover label {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .checkbox-group label {
@@ -810,20 +875,6 @@ h4 {
   flex-grow: 1;
 }
 
-.active-filters-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.active-filters-label {
-  color: var(--text-muted);
-  font-weight: 600;
-  margin-right: 0.5rem;
-  font-size: 0.95rem;
-}
-
 .filter-tag {
   display: flex;
   align-items: center;
@@ -883,12 +934,11 @@ h4 {
 
 .catalog-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 2rem;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-left: calc(280px + 3rem);
 }
 
 .sort-control {
@@ -949,38 +999,8 @@ h4 {
   background: rgba(16, 185, 129, 0.1);
 }
 
-.tooltip-wrapper {
-  position: relative;
-  display: inline-flex;
-  cursor: help;
-}
-
-.tooltip-icon {
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid var(--border-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  color: var(--text-muted);
-  transition: var(--transition);
-}
-
-.tooltip-wrapper:hover .tooltip-icon {
-  background: var(--accent-primary);
-  color: #fff;
-  border-color: var(--accent-primary);
-}
-
 .tooltip-content {
   position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-left: 10px;
-  transform: translateY(-50%);
   background: var(--bg-card-hover);
   color: var(--text-main);
   padding: 1.125rem;
@@ -997,23 +1017,6 @@ h4 {
   pointer-events: none;
   font-weight: 400;
   text-align: left;
-}
-
-.tooltip-content::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent var(--bg-card-hover) transparent transparent;
-}
-
-.tooltip-wrapper:hover .tooltip-content {
-  visibility: visible;
-  opacity: 1;
-  margin-left: 15px;
 }
 
 .spec-tooltip {
@@ -1036,6 +1039,10 @@ h4 {
 }
 
 .spec-tooltip .tooltip-content::after {
+  content: "";
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
   top: 100%;
   left: 50%;
   right: auto;
@@ -1171,5 +1178,10 @@ h4 {
 
   .catalog-sidebar {
     width: 100%;
+  }
+
+  .active-filters-label {
+    width: auto;
+    margin-right: 0.5rem;
   }
 }
