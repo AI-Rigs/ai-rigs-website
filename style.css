@@ -31,6 +31,11 @@ body {
   overflow-x: hidden;
 }
 
+body.no-initial-transitions,
+body.no-initial-transitions * {
+  transition: none !important;
+}
+
 /* Utilities */
 .container {
   max-width: 1720px;

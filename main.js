@@ -1,6 +1,10 @@
 import { productsData, specDefinitions } from './products.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Suppress all CSS transitions during initialization to prevent
+  // visible jumps (e.g. budget slider value, filter dimming)
+  document.body.classList.add('no-initial-transitions');
+
   // Mobile menu toggle mock
   const menuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
@@ -596,4 +600,9 @@ document.addEventListener('DOMContentLoaded', () => {
       softwareBg.appendChild(img);
     });
   }
+
+  // Re-enable CSS transitions now that initialization is complete
+  requestAnimationFrame(() => {
+    document.body.classList.remove('no-initial-transitions');
+  });
 });
