@@ -1031,6 +1031,14 @@ input[type=number] {
   cursor: help;
 }
 
+.spec-tooltip .tooltip-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  color: var(--text-muted);
+  cursor: help;
+}
+
 .spec-tooltip .tooltip-content {
   top: auto;
   bottom: 125%;
@@ -1124,6 +1132,10 @@ input[type=number] {
   left: 0%;
   right: 0%;
   z-index: 1;
+}
+
+body.no-initial-transitions .range-slider-track {
+  transition: none !important;
 }
 
 .dual-range {

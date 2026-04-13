@@ -59,14 +59,14 @@
             <div class="budget-inputs">
               <input type="number" id="min-budget" value="2500" min="2500" max="50000" step="500">
               <span>-</span>
-              <input type="number" id="max-budget" value="" min="2500" max="50000" step="500">
+              <input type="number" id="max-budget" value="6500" min="2500" max="50000" step="500">
             </div>
-            <div class="range-slider-wrapper">
-              <div class="range-slider-track" id="slider-track"></div>
+            <div class="range-slider-wrapper slider-pending">
+              <div class="range-slider-track" id="slider-track" style="opacity:0"></div>
               <input type="range" id="budget-slider-min" class="dual-range" min="2500" max="50000" step="500"
                 value="2500">
               <input type="range" id="budget-slider-max" class="dual-range" min="2500" max="50000" step="500"
-                value="">
+                value="6500">
             </div>
           </div>
 
@@ -104,6 +104,11 @@
             <h3 class="filter-title">
               <span class="spec-tooltip">
                 Deployment type
+                <svg class="tooltip-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
                 <span class="tooltip-content"><b>Experimentation/POC</b><br>For validation of ideas — choose between
                   prioritizing model speed or output quality.<br><br>
                   <b>Production</b><br>For user-facing workloads — a good balance between model
@@ -126,7 +131,7 @@
           <div class="filter-section">
             <h3 class="filter-title">Order by</h3>
             <select id="sort-by" class="filter-select">
-              <option value="relevance" selected>Relevance</option>
+              <option value="relevance" selected>Product relevance</option>
               <option value="price-asc">Price (Low to High)</option>
               <option value="price-desc">Price (High to Low)</option>
             </select>

@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
       budgetSliderMax.step = 500;
     }
 
+    let isInitialized = false;
+
     function updateSliderTrack() {
       if (!budgetSliderMin || !budgetSliderMax || !sliderTrack) return;
       const minVal = parseInt(budgetSliderMin.value);
@@ -189,8 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const leftPercent = ((minVal - limitMin) / range) * 100;
       const rightPercent = 100 - ((maxVal - limitMin) / range) * 100;
 
-      sliderTrack.style.left = leftPercent + '%';
-      sliderTrack.style.right = rightPercent + '%';
+      if (isInitialized) {
+        sliderTrack.style.left = leftPercent + '%';
+        sliderTrack.style.right = rightPercent + '%';
+      } else {
+        sliderTrack.style.setProperty('left', leftPercent + '%', 'important');
+        sliderTrack.style.setProperty('right', rightPercent + '%', 'important');
+      }
     }
 
     function handleSliderChange(e) {
@@ -247,7 +254,12 @@ document.addEventListener('DOMContentLoaded', () => {
       budgetSliderMax.addEventListener('input', handleSliderChange);
       minBudgetInput.addEventListener('change', handleInputChange);
       maxBudgetInput.addEventListener('change', handleInputChange);
+      isInitialized = true;
       updateSliderTrack();
+      const sliderWrapper = document.querySelector('.slider-pending');
+      const track = document.getElementById('slider-track');
+      if (sliderWrapper) sliderWrapper.classList.remove('slider-pending');
+      if (track) track.style.opacity = '1';
     }
 
     modalityCheckboxes.forEach(cb => {
@@ -265,16 +277,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
      const deploymentCheckboxes = document.querySelectorAll('.deployment-cb');
      let previousDeploymentType = null;
+     let savedUseCaseStates = null;
      deploymentCheckboxes.forEach(cb => {
-      cb.addEventListener('change', (e) => {
-        if (e.target.checked) {
-          deploymentCheckboxes.forEach(otherCb => {
-            if (otherCb !== e.target) otherCb.checked = false;
-          });
-        }
-        applyFiltersAndSort();
-      });
-    });
+       cb.addEventListener('change', (e) => {
+         if (e.target.checked) {
+           deploymentCheckboxes.forEach(otherCb => {
+             if (otherCb !== e.target) otherCb.checked = false;
+           });
+         } else {
+           const anyChecked = Array.from(deploymentCheckboxes).some(c => c.checked);
+           if (!anyChecked) {
+             e.target.checked = true;
+           }
+         }
+         applyFiltersAndSort();
+       });
+     });
 
     sortSelect.addEventListener('change', applyFiltersAndSort);
 
@@ -311,13 +329,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const deploymentType = checkedDep ? checkedDep.value : 'single';
 
        const isProduction = deploymentType === 'multiple';
-       
-       // If transitioning from Production to another deployment type, reset use case selections
+        
+       // If transitioning from Production to another deployment type, restore saved use case selections
        if (previousDeploymentType === 'multiple' && deploymentType !== 'multiple') {
-         modalityCheckboxes.forEach(cb => {
-           cb.checked = false;
-         });
+         if (savedUseCaseStates) {
+           savedUseCaseStates.forEach(({ id, checked }) => {
+             const cb = document.getElementById(id);
+             if (cb) cb.checked = checked;
+           });
+           savedUseCaseStates = null;
+         } else {
+           modalityCheckboxes.forEach(cb => {
+             cb.checked = false;
+           });
+         }
        }
+
+      // When Production is selected, save current use case states and check all
+      if (isProduction && previousDeploymentType !== 'multiple') {
+        savedUseCaseStates = Array.from(modalityCheckboxes).map(cb => ({
+          id: cb.id,
+          checked: cb.checked
+        }));
+      }
 
       // When Production is selected, check all use-case checkboxes and lock them
       modalityCheckboxes.forEach(cb => {
