@@ -33,7 +33,7 @@ export const productsData = [
     specs: {
       memoryCapacity: 'Up to 128 GB unified memory',
       memoryBandwidth: '546 GB/s',
-      performance: '38 TOPS INT8 (Neural Engine)'
+      performance: '38 TOPS (INT8, Neural Engine)'
     },
     specValues: {
       memoryCapacity: 128,
@@ -54,7 +54,7 @@ export const productsData = [
     specs: {
       memoryCapacity: 'Up to 256 GB Unified Memory',
       memoryBandwidth: '819 GB/s',
-      performance: '36 TOPS INT8 (Neural Engine)'
+      performance: '36 TOPS (INT8, Neural Engine)'
     },
     specValues: {
       memoryCapacity: 256,
@@ -66,7 +66,7 @@ export const productsData = [
     id: 'nvidia-gb10',
     title: 'Nvidia GB10 (DGX Spark / Asus GX10)',
     description: 'Compact AI supercomputer powered by the Grace Blackwell architecture. Designed for uncompromised compute density.',
-    price: 4000,
+    price: 4500,
     modality: 'textual,visual',
     deployment: 'poc-only',
     image: './assets/images/Products/nvidia_gb10_dgx.png',
@@ -75,7 +75,7 @@ export const productsData = [
     specs: {
       memoryCapacity: '128 GB unified memory (up to 256 GB via stacking)',
       memoryBandwidth: 'Up to 273 GB/s',
-      performance: '~250 TOPS INT8 (dense, est.)'
+      performance: '~250 TOPS (INT8 dense, estimated)'
     },
     specValues: {
       memoryCapacity: 256,
@@ -86,7 +86,7 @@ export const productsData = [
   {
     id: 'single-gpu',
     title: 'Single-GPU Workstation',
-    description: 'Highly customizable for any use case, with good future upgradability options. Suited for running small to medium sized AI models for individuals or a small team.',
+    description: 'A highly customizable desktop computer for any use case, with good future upgradability options. Suited for running small to medium sized AI models for individuals or a small team.',
     price: 3500,
     modality: 'visual,textual',
     deployment: '',
@@ -96,7 +96,7 @@ export const productsData = [
     specs: {
       memoryCapacity: 'Up to 96 GB GDDR7',
       memoryBandwidth: 'Up to 1792 GB/s',
-      performance: 'Up to 4000 TOPS (FP4 with sparsity)'
+      performance: 'Up to 4000 TOPS (FP4 sparse)'
     },
     specValues: {
       memoryCapacity: 96,
@@ -107,7 +107,7 @@ export const productsData = [
   {
     id: 'dual-gpu',
     title: 'Dual-GPU Workstation',
-    description: 'A cost-effective solution for more demanding tasks that don\'t require a full enterprise server. Suited for running medium to medium-large sized AI models for individuals or a small team.',
+    description: 'A cost-effective desktop solution for more demanding tasks that don\'t require a full enterprise server. Suited for running medium to medium-large sized AI models for individuals or a small team.',
     price: 6500,
     modality: 'visual,textual,audio',
     deployment: '',
@@ -117,7 +117,7 @@ export const productsData = [
     specs: {
       memoryCapacity: 'Up to 192 GB GDDR7 (combined)',
       memoryBandwidth: 'Up to 3584 GB/s (combined)',
-      performance: 'Up to 8000 TOPS (FP4 with sparsity, combined)'
+      performance: 'Up to 8000 TOPS (FP4 sparse, combined)'
     },
     specValues: {
       memoryCapacity: 192,
@@ -130,7 +130,7 @@ export const productsData = [
 export const specDefinitions = {
   memoryCapacity: {
     label: 'Memory capacity',
-    tooltip: 'Higher memory capacity allows you to load larger models and have longer context windows. Bigger models are generally more capable and produce better outputs.'
+    tooltip: 'Higher memory capacity allows you to load larger models with longer context windows. Bigger models are generally more capable and produce better outputs.'
   },
   memoryBandwidth: {
     label: 'Memory bandwidth',

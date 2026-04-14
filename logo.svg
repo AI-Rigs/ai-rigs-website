@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" fill="none">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&amp;display=swap');
+  </style>
+  <text x="0" y="30" font-family="Outfit, sans-serif" font-size="24" font-weight="800" letter-spacing="1px">
+    <tspan fill="#10B981">AI</tspan><tspan fill="currentColor">RIGS</tspan>
+  </text>
+</svg>

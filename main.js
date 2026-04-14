@@ -497,14 +497,14 @@ document.addEventListener('DOMContentLoaded', () => {
       "vendor lock-in",
       "changing terms and conditions",
       "shrinking rate limits",
-      "AI model regression",
-      "high congestion times"
+      "high congestion times",
+      "AI model regression"
     ];
     const yValues = [
-      "build environment",
-      "digital footprint",
-      "bottom line",
-      "process flow"
+      "sensitive data",
+      "AI expense budget",
+      "process workflows",
+      "digital footprint"
     ];
 
     let xIndex = 0;
