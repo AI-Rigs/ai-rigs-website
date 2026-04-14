@@ -275,24 +275,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-     const deploymentCheckboxes = document.querySelectorAll('.deployment-cb');
-     let previousDeploymentType = null;
-     let savedUseCaseStates = null;
-     deploymentCheckboxes.forEach(cb => {
-       cb.addEventListener('change', (e) => {
-         if (e.target.checked) {
-           deploymentCheckboxes.forEach(otherCb => {
-             if (otherCb !== e.target) otherCb.checked = false;
-           });
-         } else {
-           const anyChecked = Array.from(deploymentCheckboxes).some(c => c.checked);
-           if (!anyChecked) {
-             e.target.checked = true;
-           }
-         }
-         applyFiltersAndSort();
-       });
-     });
+    const deploymentCheckboxes = document.querySelectorAll('.deployment-cb');
+    let previousDeploymentType = null;
+    let savedUseCaseStates = null;
+    deploymentCheckboxes.forEach(cb => {
+      cb.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          deploymentCheckboxes.forEach(otherCb => {
+            if (otherCb !== e.target) otherCb.checked = false;
+          });
+        } else {
+          const anyChecked = Array.from(deploymentCheckboxes).some(c => c.checked);
+          if (!anyChecked) {
+            e.target.checked = true;
+          }
+        }
+        applyFiltersAndSort();
+      });
+    });
 
     sortSelect.addEventListener('change', applyFiltersAndSort);
 
@@ -328,22 +328,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const checkedDep = Array.from(deploymentCheckboxes).find(cb => cb.checked);
       const deploymentType = checkedDep ? checkedDep.value : 'single';
 
-       const isProduction = deploymentType === 'multiple';
-        
-       // If transitioning from Production to another deployment type, restore saved use case selections
-       if (previousDeploymentType === 'multiple' && deploymentType !== 'multiple') {
-         if (savedUseCaseStates) {
-           savedUseCaseStates.forEach(({ id, checked }) => {
-             const cb = document.getElementById(id);
-             if (cb) cb.checked = checked;
-           });
-           savedUseCaseStates = null;
-         } else {
-           modalityCheckboxes.forEach(cb => {
-             cb.checked = false;
-           });
-         }
-       }
+      const isProduction = deploymentType === 'multiple';
+
+      // If transitioning from Production to another deployment type, restore saved use case selections
+      if (previousDeploymentType === 'multiple' && deploymentType !== 'multiple') {
+        if (savedUseCaseStates) {
+          savedUseCaseStates.forEach(({ id, checked }) => {
+            const cb = document.getElementById(id);
+            if (cb) cb.checked = checked;
+          });
+          savedUseCaseStates = null;
+        } else {
+          modalityCheckboxes.forEach(cb => {
+            cb.checked = false;
+          });
+        }
+      }
 
       // When Production is selected, save current use case states and check all
       if (isProduction && previousDeploymentType !== 'multiple') {
@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
         p.element.classList.remove('hidden');
         productsGrid.appendChild(p.element);
       });
-      
+
       // Update previous deployment type for next iteration
       previousDeploymentType = deploymentType;
     }
@@ -509,17 +509,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (bannerX && bannerY) {
     const xValues = [
-      "vendor lock-in",
-      "changing terms and conditions",
-      "shrinking rate limits",
-      "high congestion times",
-      "AI model regression"
+      "vendor lock-in.",
+      "changing terms and conditions.",
+      "shrinking rate limits.",
+      "high congestion times.",
+      "AI model regression."
     ];
     const yValues = [
-      "sensitive data",
-      "AI expense budget",
-      "process workflows",
-      "digital footprint"
+      "sensitive data.",
+      "AI expense budget.",
+      "process workflows.",
+      "digital footprint."
     ];
 
     let xIndex = 0;

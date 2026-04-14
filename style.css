@@ -351,8 +351,8 @@ h4 {
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1720px;
+  gap: 1.5rem;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -445,10 +445,13 @@ h4 {
   height: auto;
   max-width: 170px;
   max-height: 95px;
-  margin-left: -85px; /* Half of max-width */
-  margin-top: -47px;  /* Half of max-height */
+  margin-left: -85px;
+  /* Half of max-width */
+  margin-top: -47px;
+  /* Half of max-height */
   object-fit: contain;
-  opacity: 1; /* Original colors */
+  opacity: 1;
+  /* Original colors */
   transition: opacity 0.5s ease;
   z-index: 1;
 }
@@ -717,7 +720,7 @@ input[type=number] {
   line-height: 1.4;
 }
 
-.catalog-sidebar .checkbox-group input[type="checkbox"]:checked + label {
+.catalog-sidebar .checkbox-group input[type="checkbox"]:checked+label {
   background: rgba(16, 185, 129, 0.1);
   color: var(--accent-primary);
 }
@@ -914,7 +917,8 @@ input[type=number] {
 }
 
 .filter-tag .remove-filter {
-  pointer-events: none; /* Let clicks bubble to the parent tag */
+  pointer-events: none;
+  /* Let clicks bubble to the parent tag */
   display: flex;
   align-items: center;
   justify-content: center;
