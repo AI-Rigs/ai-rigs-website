@@ -484,6 +484,21 @@ document.addEventListener('DOMContentLoaded', () => {
       // Logic removed as per user request to remove the active filters bar
     }
 
+    // Handle URL parameters for pre-applied use case filters
+    const urlParams = new URLSearchParams(window.location.search);
+    const useCaseParam = urlParams.get('use-case');
+    if (useCaseParam) {
+      const checkbox = document.getElementById(useCaseParam);
+      if (checkbox && checkbox.classList.contains('use-case-cb')) {
+        checkbox.checked = true;
+        // The exclusive selection logic is in the 'change' listener, 
+        // so we manually uncheck others since we're setting it before the initial call.
+        modalityCheckboxes.forEach(cb => {
+          if (cb !== checkbox) cb.checked = false;
+        });
+      }
+    }
+
     // Initial sort
     applyFiltersAndSort();
   }
