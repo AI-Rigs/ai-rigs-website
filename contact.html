@@ -14,33 +14,8 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-container">
-      <a href="index.html" class="logo">
-        <span>AI</span>RIGS
-      </a>
-      <nav class="nav">
-        <ul class="nav-links">
-          <li><a href="rigs.html">Rigs</a></li>
-          <li><a href="software.html">Software</a></li>
-          <li><a href="reliability.html">Reliability</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <a href="contact.html" class="btn btn-outline">Contact us</a>
-        <button class="mobile-menu-btn" aria-label="Toggle Menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <!-- Header (injected via JS) -->
+  <header class="header"></header>
 
   <!-- Lead Generation Form Section -->
   <section class="lead-section" id="lead-form" style="padding-top: 8rem;">
@@ -48,12 +23,12 @@
       <div class="lead-container">
         <div class="lead-info">
           <h2>Let's Build Your Perfect Workflow Engine</h2>
-          <p>Detail your specific use case, and our engineers will architect the ideal hardware and software stack to
+          <p>Detail your specific use case, and will architect the to
             maximize your productivity. We don't believe in one-size-fits-all.</p>
           <ul class="lead-benefits">
-            <li>✓ Response within 24 hours</li>
-            <li>✓ Hardware &amp; Software Recommendations</li>
-            <li>✓ Transparent Pricing</li>
+            <li>Response within 2 business days</li>
+            <li>Free initial consultation</li>
+            <li>Transparent pricing scheme</li>
           </ul>
         </div>
         <div class="lead-form-wrapper">
@@ -70,17 +45,19 @@
               <label for="usecase">Primary Use Case</label>
               <select id="usecase" name="usecase" required>
                 <option value="" disabled selected>Select your primary workload</option>
-                <option value="llm_training">Model Training &amp; Fine-Tuning</option>
-                <option value="llm_inference">Agentic software development</option>
-                <option value="audio_video_gen">Audio / Video Generation</option>
-                <option value="computer_vision">Computer Vision</option>
+                <option value="uc-finetune">AI model fine-tuning</option>
+                <option value="uc-agentic">Agentic engineering</option>
+                <option value="uc-chatbot">Chatbots</option>
+                <option value="uc-doc">Document analysis/summarization</option>
+                <option value="uc-obj">Object detection/recognition</option>
+                <option value="uc-video">Video/image generation</option>
                 <option value="other">Other (please provide details below)</option>
               </select>
             </div>
             <div class="form-group">
               <label for="details">Workflow Details</label>
               <textarea id="details" name="details" rows="4"
-                placeholder="Tell us more about your goals, preference for concrete tools, and any possible constraints. The more information you provide, the more accurate initially proposed solution will be."></textarea>
+                placeholder="Tell us more about your goals, preferences for concrete tools, and any constraints. The more information, the more accurate our initial proposal."></textarea>
             </div>
 
             <div class="form-row">
@@ -106,36 +83,8 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><span>AI</span>RIGS</a>
-        <p>Precision-engineered AI workstations for the world's most demanding workloads.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Products</h4>
-        <ul>
-          <li><a href="#">GPU Workstations</a></li>
-          <li><a href="#">Multi-GPU Systems</a></li>
-          <li><a href="#">Supercomputers</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Case Studies</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2026 AI Rigs. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer (injected via JS) -->
+  <footer class="footer"></footer>
 
   <script type="module" src="./main.js"></script>
 </body>

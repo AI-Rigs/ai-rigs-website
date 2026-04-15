@@ -1,6 +1,14 @@
 import { productsData, specDefinitions } from './products.js';
+import { globalHeader, globalFooter } from './components.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Inject global header and footer dynamically
+  const headerElem = document.querySelector('.header');
+  if (headerElem) headerElem.outerHTML = globalHeader;
+  
+  const footerElem = document.querySelector('.footer');
+  if (footerElem) footerElem.outerHTML = globalFooter;
+
   // Suppress all CSS transitions during initialization to prevent
   // visible jumps (e.g. budget slider value, filter dimming)
   document.body.classList.add('no-initial-transitions');
@@ -513,13 +521,14 @@ document.addEventListener('DOMContentLoaded', () => {
       "changing terms and conditions.",
       "shrinking rate limits.",
       "high congestion times.",
-      "AI model regression."
+      "cloud model degradation."
     ];
     const yValues = [
       "sensitive data.",
       "AI expense budget.",
       "process workflows.",
-      "digital footprint."
+      "digital footprint.",
+      "AI infrastructure."
     ];
 
     let xIndex = 0;

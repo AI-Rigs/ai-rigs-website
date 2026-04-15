@@ -24,43 +24,18 @@
     </defs>
   </svg>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-container">
-      <a href="index.html" class="logo">
-        <span>AI</span>RIGS
-      </a>
-      <nav class="nav">
-        <ul class="nav-links">
-          <li><a href="rigs.html">Rigs</a></li>
-          <li><a href="software.html">Software</a></li>
-          <li><a href="reliability.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <a href="contact.html" class="btn btn-outline">Contact us</a>
-        <button class="mobile-menu-btn" aria-label="Toggle Menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <!-- Header (injected via JS) -->
+  <header class="header"></header>
 
   <!-- Hero Section -->
   <section class="hero" style="min-height: 40vh; padding-top: 8rem;">
     <div class="hero-bg"></div>
     <div class="container hero-content">
-      <h1 class="hero-title"><span class="highlight">Curated software tool stack</span><br> for any AI workload.
+      <h1 class="hero-title"><span class="highlight">Curated software toolstacks</span><br> for every AI use case.
       </h1>
       <p class="hero-subtitle">
-        All our machines comes with a customized software<br>
-        tailored precisely to your business requirements.
+        All our machines come pre-configured with software<br>
+        that caters to your business needs.
       </p>
     </div>
   </section>
@@ -79,8 +54,8 @@
         <p>The foundation of every AI Rig. We configure Ubuntu, NVIDIA drivers, CUDA toolkits, and Docker containers
           with <strong>PyTorch</strong> or <strong>TensorFlow</strong>, ensuring your environment is stable from day
           one.</p>
-        <a href="rigs.html?use-case=uc-finetune" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
+        <a href="hardware.html?use-case=uc-finetune" class="btn btn-outline"
+          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
       </div>
 
       <div class="feature-card">
@@ -95,8 +70,8 @@
         <h3>Agentic engineering</h3>
         <p>Optimized environments for autonomous agents and coding assistants. We install the latest SDKs and
           frameworks required for building and testing agentic workflows that interact with your local systems.</p>
-        <a href="rigs.html?use-case=uc-agentic" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
+        <a href="hardware.html?use-case=uc-agentic" class="btn btn-outline"
+          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
       </div>
 
       <div class="feature-card">
@@ -113,8 +88,8 @@
         <p>Full support for conversational AI deployment. We pre-configure <strong>vLLM</strong> and optimized
           inference
           engines to power responsive chatbots with low latency and high throughput.</p>
-        <a href="rigs.html?use-case=uc-chatbot" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
+        <a href="hardware.html?use-case=uc-chatbot" class="btn btn-outline"
+          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
       </div>
 
       <div class="feature-card">
@@ -131,8 +106,8 @@
         <h3>Document analysis/summarization</h3>
         <p>A comprehensive suite of data processing tools. From JupyterLab to RAPIDS, we ensure your workstation can
           handle massive datasets with GPU acceleration for blindingly fast analysis.</p>
-        <a href="rigs.html?use-case=uc-doc" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
+        <a href="hardware.html?use-case=uc-doc" class="btn btn-outline"
+          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
       </div>
 
       <div class="feature-card">
@@ -149,8 +124,8 @@
         <h3>Object detection/recognition</h3>
         <p>All software is configured for completely offline operation when required. Keep your intellectual property,
           models, and data within your own four walls, never leaving your local network.</p>
-        <a href="rigs.html?use-case=uc-obj" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
+        <a href="hardware.html?use-case=uc-obj" class="btn btn-outline"
+          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
       </div>
 
       <div class="feature-card">
@@ -166,8 +141,8 @@
         <p>Full support for state-of-the-art image and video generation workflows. We pre-install and optimize tools
           like <strong>ComfyUI</strong> for professional-grade visual creation, along with all necessary custom nodes
           and model weights.</p>
-        <a href="rigs.html?use-case=uc-video" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
+        <a href="hardware.html?use-case=uc-video" class="btn btn-outline"
+          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
       </div>
     </div>
     </div>
@@ -187,36 +162,8 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><span>AI</span>RIGS</a>
-        <p>Tailored AI workstations for small and medium businesses.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Products</h4>
-        <ul>
-          <li><a href="rigs.html">GPU Workstations</a></li>
-          <li><a href="rigs.html">Multi-GPU Systems</a></li>
-          <li><a href="rigs.html">Supercomputers</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Case Studies</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2026 AI Rigs. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer (injected via JS) -->
+  <footer class="footer"></footer>
 
   <script type="module" src="./main.js"></script>
 </body>

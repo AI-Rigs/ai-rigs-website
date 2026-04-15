@@ -603,6 +603,15 @@ h4 {
 
 .lead-benefits li {
   margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.lead-benefits li::before {
+  content: '✓';
+  color: var(--accent-primary);
+  margin-right: 0.75rem;
+  font-weight: bold;
 }
 
 .lead-form-wrapper {
@@ -647,6 +656,11 @@ input[type=number] {
   color: var(--text-main);
   font-family: var(--font-main);
   transition: var(--transition);
+}
+
+.custom-form select option {
+  background-color: var(--bg-card);
+  color: var(--text-main);
 }
 
 .custom-form input:focus,
