@@ -14,6 +14,16 @@
 </head>
 
 <body>
+  <!-- Global Icon Gradient -->
+  <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="var(--accent-primary)" />
+        <stop offset="100%" stop-color="var(--accent-secondary)" />
+      </linearGradient>
+    </defs>
+  </svg>
+
   <!-- Header -->
   <header class="header">
     <div class="container header-container">
@@ -59,60 +69,105 @@
   <section class="features" style="padding: 4rem 0;">
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">🛠️</div>
+        <div class="feature-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6" />
+          </svg>
+        </div>
         <h3>AI model fine-tuning</h3>
         <p>The foundation of every AI Rig. We configure Ubuntu, NVIDIA drivers, CUDA toolkits, and Docker containers
           with <strong>PyTorch</strong> or <strong>TensorFlow</strong>, ensuring your environment is stable from day
           one.</p>
         <a href="rigs.html?use-case=uc-finetune" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">View Rigs</a>
+          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🧠</div>
+        <div class="feature-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M12 8V4H8 M4 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z M9 13v0.01 M15 13v0.01 M10 17h4">
+            </path>
+          </svg>
+        </div>
         <h3>Agentic engineering</h3>
         <p>Optimized environments for autonomous agents and coding assistants. We install the latest SDKs and
           frameworks required for building and testing agentic workflows that interact with your local systems.</p>
         <a href="rigs.html?use-case=uc-agentic" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">View Rigs</a>
+          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">💬</div>
+        <div class="feature-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <path d="M8 10h.01"></path>
+            <path d="M12 10h.01"></path>
+            <path d="M16 10h.01"></path>
+          </svg>
+        </div>
         <h3>Chatbots</h3>
         <p>Full support for conversational AI deployment. We pre-configure <strong>vLLM</strong> and optimized
           inference
           engines to power responsive chatbots with low latency and high throughput.</p>
         <a href="rigs.html?use-case=uc-chatbot" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">View Rigs</a>
+          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">📊</div>
+        <div class="feature-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
         <h3>Document analysis/summarization</h3>
         <p>A comprehensive suite of data processing tools. From JupyterLab to RAPIDS, we ensure your workstation can
           handle massive datasets with GPU acceleration for blindingly fast analysis.</p>
         <a href="rigs.html?use-case=uc-doc" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">View Rigs</a>
+          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🔒</div>
+        <div class="feature-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+            <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+            <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+            <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+            <rect x="8" y="8" width="8" height="8" rx="1"></rect>
+          </svg>
+        </div>
         <h3>Object detection/recognition</h3>
         <p>All software is configured for completely offline operation when required. Keep your intellectual property,
           models, and data within your own four walls, never leaving your local network.</p>
         <a href="rigs.html?use-case=uc-obj" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">View Rigs</a>
+          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🎨</div>
+        <div class="feature-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
         <h3>Video/image generation</h3>
         <p>Full support for state-of-the-art image and video generation workflows. We pre-install and optimize tools
           like <strong>ComfyUI</strong> for professional-grade visual creation, along with all necessary custom nodes
           and model weights.</p>
         <a href="rigs.html?use-case=uc-video" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">View Rigs</a>
+          style="margin-top: auto; align-self: flex-start;">Explore rigs</a>
       </div>
     </div>
     </div>
