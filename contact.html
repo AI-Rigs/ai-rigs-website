@@ -18,8 +18,9 @@
   <header class="header"></header>
 
   <!-- Lead Generation Form Section -->
-  <section class="lead-section" id="lead-form" style="padding-top: 8rem;">
-    <div class="container">
+  <section class="lead-section" id="lead-form" style="padding-top: 8rem; position: relative; overflow: hidden;">
+    <div class="stars-placeholder"></div>
+    <div class="container" style="position: relative; z-index: 2;">
       <div class="lead-container">
         <div class="lead-info">
           <h2>Let's Build Your Perfect Workflow Engine</h2>
@@ -59,6 +60,10 @@
               <textarea id="details" name="details" rows="4"
                 placeholder="Tell us more about your goals, preferences for concrete tools, and any constraints. The more information, the more accurate our initial proposal."></textarea>
             </div>
+            
+            <input type="hidden" id="budget" name="budget" value="">
+            <input type="hidden" id="deployment" name="deployment" value="">
+            <input type="hidden" id="hardware" name="hardware" value="">
 
             <div class="form-row">
               <div class="checkbox-group">

@@ -1,13 +1,18 @@
 import { productsData, specDefinitions } from './products.js';
-import { globalHeader, globalFooter } from './components.js';
+import { globalHeader, globalFooter, globalStars } from './components.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+
   // Inject global header and footer dynamically
   const headerElem = document.querySelector('.header');
   if (headerElem) headerElem.outerHTML = globalHeader;
   
   const footerElem = document.querySelector('.footer');
   if (footerElem) footerElem.outerHTML = globalFooter;
+
+  const starsPlaceholders = document.querySelectorAll('.stars-placeholder');
+  starsPlaceholders.forEach(el => el.outerHTML = globalStars);
 
   // Suppress all CSS transitions during initialization to prevent
   // visible jumps (e.g. budget slider value, filter dimming)
@@ -481,6 +486,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // Re-append filtered products to change their visual order
       filtered.forEach(p => {
         p.element.classList.remove('hidden');
+
+        const btn = p.element.querySelector('.btn-primary');
+        if (btn) {
+          const params = new URLSearchParams();
+          if (selectedMods.length > 0) {
+            params.set('usecase', selectedMods[0].id);
+          }
+          const safeMax = maxBudget === Infinity ? 'max' : maxBudget;
+          params.set('budget', `${minBudget}-${safeMax}`);
+          params.set('deployment', deploymentType === 'single' ? 'poc' : 'production');
+          params.set('hardware', p.id);
+          btn.href = `contact.html?${params.toString()}`;
+        }
+
         productsGrid.appendChild(p.element);
       });
 
@@ -492,8 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Logic removed as per user request to remove the active filters bar
     }
 
-    // Handle URL parameters for pre-applied use case filters
-    const urlParams = new URLSearchParams(window.location.search);
+    // Handle URL parameters for pre-applied use case filters for hardware.html
     const useCaseParam = urlParams.get('use-case');
     if (useCaseParam) {
       const checkbox = document.getElementById(useCaseParam);
@@ -501,6 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkbox.checked = true;
         // The exclusive selection logic is in the 'change' listener, 
         // so we manually uncheck others since we're setting it before the initial call.
+        const modalityCheckboxes = document.querySelectorAll('.use-case-cb');
         modalityCheckboxes.forEach(cb => {
           if (cb !== checkbox) cb.checked = false;
         });
@@ -509,6 +528,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial sort
     applyFiltersAndSort();
+  }
+
+  // Handle contact form pre-selection
+  const contactUseCase = urlParams.get('usecase');
+  const contactBudget = urlParams.get('budget');
+  const contactDeployment = urlParams.get('deployment');
+  const contactHardware = urlParams.get('hardware');
+
+  if (contactUseCase) {
+    const useCaseSelect = document.getElementById('usecase');
+    if (useCaseSelect) useCaseSelect.value = contactUseCase;
+  }
+  if (contactBudget) {
+    const budgetInput = document.getElementById('budget');
+    if (budgetInput) budgetInput.value = contactBudget;
+  }
+  if (contactDeployment) {
+    const deploymentInput = document.getElementById('deployment');
+    if (deploymentInput) deploymentInput.value = contactDeployment;
+  }
+  if (contactHardware) {
+    const hardwareInput = document.getElementById('hardware');
+    if (hardwareInput) hardwareInput.value = contactHardware;
   }
 
   // --- Banner Word Animation ---

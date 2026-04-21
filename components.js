@@ -56,3 +56,12 @@ export const globalFooter = `
     </div>
   </footer>
 `;
+
+export const globalStars = `
+    <div class="stars-container">
+      <div class="stars-layer stars-layer-1"></div>
+      <div class="stars-layer stars-layer-2"></div>
+      <div class="stars-layer stars-layer-3"></div>
+    </div>
+`;
+

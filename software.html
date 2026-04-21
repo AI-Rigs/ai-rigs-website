@@ -30,6 +30,7 @@
   <!-- Hero Section -->
   <section class="hero" style="min-height: 40vh; padding-top: 8rem;">
     <div class="hero-bg"></div>
+    <div class="stars-placeholder"></div>
     <div class="container hero-content">
       <h1 class="hero-title"><span class="highlight">Curated software toolstacks</span><br> for every AI use case.
       </h1>
@@ -43,7 +44,7 @@
   <!-- Software Categories -->
   <section class="features" style="padding: 4rem 0;">
     <div class="features-grid">
-      <div class="feature-card">
+      <a href="hardware.html?use-case=uc-finetune" class="feature-card clickable-card">
         <div class="feature-icon">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -54,11 +55,13 @@
         <p>The foundation of every AI Rig. We configure Ubuntu, NVIDIA drivers, CUDA toolkits, and Docker containers
           with <strong>PyTorch</strong> or <strong>TensorFlow</strong>, ensuring your environment is stable from day
           one.</p>
-        <a href="hardware.html?use-case=uc-finetune" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
-      </div>
+        <div class="feature-actions"
+          style="margin-top: auto; display: flex; align-items: center; color: var(--accent-primary); font-weight: 600; font-size: 1.1rem;">
+          Explore hardware <span class="arrow">&rarr;</span>
+        </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="hardware.html?use-case=uc-agentic" class="feature-card clickable-card">
         <div class="feature-icon">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -70,11 +73,13 @@
         <h3>Agentic engineering</h3>
         <p>Optimized environments for autonomous agents and coding assistants. We install the latest SDKs and
           frameworks required for building and testing agentic workflows that interact with your local systems.</p>
-        <a href="hardware.html?use-case=uc-agentic" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
-      </div>
+        <div class="feature-actions"
+          style="margin-top: auto; display: flex; align-items: center; color: var(--accent-primary); font-weight: 600; font-size: 1.1rem;">
+          Explore hardware <span class="arrow">&rarr;</span>
+        </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="hardware.html?use-case=uc-chatbot" class="feature-card clickable-card">
         <div class="feature-icon">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round">
@@ -88,11 +93,13 @@
         <p>Full support for conversational AI deployment. We pre-configure <strong>vLLM</strong> and optimized
           inference
           engines to power responsive chatbots with low latency and high throughput.</p>
-        <a href="hardware.html?use-case=uc-chatbot" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
-      </div>
+        <div class="feature-actions"
+          style="margin-top: auto; display: flex; align-items: center; color: var(--accent-primary); font-weight: 600; font-size: 1.1rem;">
+          Explore hardware <span class="arrow">&rarr;</span>
+        </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="hardware.html?use-case=uc-doc" class="feature-card clickable-card">
         <div class="feature-icon">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round">
@@ -106,11 +113,13 @@
         <h3>Document analysis/summarization</h3>
         <p>A comprehensive suite of data processing tools. From JupyterLab to RAPIDS, we ensure your workstation can
           handle massive datasets with GPU acceleration for blindingly fast analysis.</p>
-        <a href="hardware.html?use-case=uc-doc" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
-      </div>
+        <div class="feature-actions"
+          style="margin-top: auto; display: flex; align-items: center; color: var(--accent-primary); font-weight: 600; font-size: 1.1rem;">
+          Explore hardware <span class="arrow">&rarr;</span>
+        </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="hardware.html?use-case=uc-obj" class="feature-card clickable-card">
         <div class="feature-icon">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round">
@@ -124,11 +133,13 @@
         <h3>Object detection/recognition</h3>
         <p>All software is configured for completely offline operation when required. Keep your intellectual property,
           models, and data within your own four walls, never leaving your local network.</p>
-        <a href="hardware.html?use-case=uc-obj" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
-      </div>
+        <div class="feature-actions"
+          style="margin-top: auto; display: flex; align-items: center; color: var(--accent-primary); font-weight: 600; font-size: 1.1rem;">
+          Explore hardware <span class="arrow">&rarr;</span>
+        </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="hardware.html?use-case=uc-video" class="feature-card clickable-card">
         <div class="feature-icon">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#icon-gradient)" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round">
@@ -141,9 +152,11 @@
         <p>Full support for state-of-the-art image and video generation workflows. We pre-install and optimize tools
           like <strong>ComfyUI</strong> for professional-grade visual creation, along with all necessary custom nodes
           and model weights.</p>
-        <a href="hardware.html?use-case=uc-video" class="btn btn-outline"
-          style="margin-top: auto; align-self: flex-start;">Explore hardware</a>
-      </div>
+        <div class="feature-actions"
+          style="margin-top: auto; display: flex; align-items: center; color: var(--accent-primary); font-weight: 600; font-size: 1.1rem;">
+          Explore hardware <span class="arrow">&rarr;</span>
+        </div>
+      </a>
     </div>
     </div>
     </div>
@@ -152,13 +165,13 @@
   <!-- Call to Action -->
   <section class="lead-section" style="padding: 6rem 0;">
     <div class="container text-center">
-      <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Need a different kind of toolset?</h2>
+      <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">In need of a something else?</h2>
       <p
         style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Tell us about your proprietary workflows or niche requirements. Our engineers will research, test, and
+        Tell us about your unique workflows and requirements. We will research, test, and
         pre-configure the exact environment you need.
       </p>
-      <a href="contact.html" class="btn btn-primary btn-large">Request a custom stack</a>
+      <a href="contact.html?usecase=other" class="btn btn-primary btn-large">Request a custom stack</a>
     </div>
   </section>
 
