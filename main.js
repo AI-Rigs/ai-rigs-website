@@ -1,5 +1,5 @@
 import { productsData, specDefinitions } from './products.js';
-import { globalHeader, globalFooter, globalStars } from './components.js';
+import { globalHeader, globalFooter } from './components.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const footerElem = document.querySelector('.footer');
   if (footerElem) footerElem.outerHTML = globalFooter;
-
-  const starsPlaceholders = document.querySelectorAll('.stars-placeholder');
-  starsPlaceholders.forEach(el => el.outerHTML = globalStars);
 
   // Suppress all CSS transitions during initialization to prevent
   // visible jumps (e.g. budget slider value, filter dimming)
