@@ -44,7 +44,7 @@ export const productsData = [
   {
     id: 'mac-studio-m3-ultra',
     title: 'Mac Studio M3 Ultra',
-    description: "Apple's most powerful desktop chip delivers workstation-class AI throughput with massive unified memory capacity.",
+    description: "Apple's most powerful desktop chip comes with a massive unified memory capacity and high-bandwith memory, making it an excellent choice for real-time text generation.",
     price: 5000,
     modality: 'visual,textual,audio',
     deployment: 'poc-only',
@@ -65,7 +65,7 @@ export const productsData = [
   {
     id: 'nvidia-gb10',
     title: 'Nvidia GB10 (DGX Spark / Asus GX10)',
-    description: 'Compact AI supercomputer powered by the Grace Blackwell architecture. Designed for uncompromised compute density.',
+    description: 'A compact machine powered by Nvidia\'s Grace Blackwell architecture. Provides an excellent platform for prototyping, testing and deploying AI models in a small and power-efficient package.',
     price: 4500,
     modality: 'textual,visual',
     deployment: 'poc-only',

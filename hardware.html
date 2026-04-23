@@ -34,7 +34,10 @@
             <div class="budget-inputs">
               <input type="number" id="min-budget" value="2500" min="2500" max="50000" step="500">
               <span>-</span>
-              <input type="number" id="max-budget" value="6500" min="2500" max="50000" step="500">
+              <div class="max-budget-wrapper">
+                <input type="number" id="max-budget" value="6500" min="2500" max="50000" step="500">
+                <span id="max-budget-plus" class="hidden">+</span>
+              </div>
             </div>
             <div class="range-slider-wrapper slider-pending">
               <div class="range-slider-track" id="slider-track" style="opacity:0"></div>

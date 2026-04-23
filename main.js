@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inject global header and footer dynamically
   const headerElem = document.querySelector('.header');
   if (headerElem) headerElem.outerHTML = globalHeader;
-  
+
   const footerElem = document.querySelector('.footer');
   if (footerElem) footerElem.outerHTML = globalFooter;
 
@@ -207,6 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         sliderTrack.style.setProperty('left', leftPercent + '%', 'important');
         sliderTrack.style.setProperty('right', rightPercent + '%', 'important');
+      }
+
+      const maxBudgetPlus = document.getElementById('max-budget-plus');
+      if (maxBudgetPlus) {
+        if (maxVal >= limitMax) {
+          maxBudgetPlus.classList.remove('hidden');
+        } else {
+          maxBudgetPlus.classList.add('hidden');
+        }
       }
     }
 

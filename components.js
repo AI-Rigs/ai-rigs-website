@@ -8,7 +8,8 @@ export const globalHeader = `
         <ul class="nav-links">
           <li><a href="hardware.html">Hardware</a></li>
           <li><a href="software.html">Software</a></li>
-          <li><a href="reliability.html">Services</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -36,7 +37,8 @@ export const globalFooter = `
         <ul>
           <li><a href="hardware.html">Hardware</a></li>
           <li><a href="software.html">Software</a></li>
-          <li><a href="reliability.html">Services</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
