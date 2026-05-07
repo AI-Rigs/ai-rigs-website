@@ -46,6 +46,7 @@ export const productsData = [
     id: 'mac-studio-m3-ultra',
     title: 'Mac Studio M3 Ultra',
     description: "Apple's most powerful desktop chip comes with a massive unified memory capacity and high-bandwith memory, making it an excellent choice for real-time text generation.",
+    outOfStock: true,
     price: 5000,
     modality: 'visual,textual,audio',
     deployment: 'poc-only',
