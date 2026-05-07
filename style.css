@@ -1298,9 +1298,9 @@ body.no-initial-transitions .range-slider-track {
   font-family: var(--font-main);
   font-size: 0.75rem;
   text-align: center;
-  color: white;
-  background: rgba(239, 68, 68, 0.9);
-  backdrop-filter: blur(4px);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(185, 28, 28, 0.75);
+  backdrop-filter: blur(8px);
   letter-spacing: 0.02em;
   border: 1px solid rgba(255, 255, 255, 0.2);
   user-select: none;
