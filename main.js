@@ -685,12 +685,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const softwareBg = document.getElementById('software-images-bg');
   if (softwareBg) {
     const layout = [
-      { src: 'assets/images/Software/comfy-ui-logo.png', x: 35, y: 52 },
+      { src: 'assets/images/Software/comfy-ui-logo.png', x: 34, y: 52 },
       { src: 'assets/images/Software/openclaw-dark.png', x: 32, y: 76 },
       { src: 'assets/images/Software/unsloth-studio-logo.avif', x: 61, y: 61 },
       { src: 'assets/images/Software/lmstudio-logo.png', x: 86, y: 76 },
       { src: 'assets/images/Software/vLLM-Logo.png', x: 82, y: 52 },
-      { src: 'assets/images/Software/ollama-logo.png', x: 59, y: 84 }
+      { src: 'assets/images/Software/sglang-logo.png', x: 59, y: 84 }
     ];
 
     layout.forEach((item) => {
