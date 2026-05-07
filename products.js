@@ -24,6 +24,7 @@ export const productsData = [
     id: 'mac-studio-m4-max',
     title: 'Mac Studio M4 Max',
     description: 'Exceptional single-user AI performance in a compact form factor with the M4 Max chip and high-Memory bandwidth unified memory.',
+    outOfStock: true,
     price: 2500,
     modality: 'visual,textual,audio',
     deployment: 'poc-only',

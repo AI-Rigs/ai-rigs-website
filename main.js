@@ -106,6 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
       card.dataset.memoryBandwidth = product.specValues.memoryBandwidth;
       card.dataset.performance = product.specValues.performance;
 
+      if (product.outOfStock) {
+        card.classList.add('out-of-stock');
+        
+        const btn = clone.querySelector('.btn-primary');
+        if (btn) {
+          btn.classList.add('hidden');
+        }
+
+        const stockText = clone.querySelector('.out-of-stock-text');
+        if (stockText) stockText.classList.remove('hidden');
+      }
+
       const imgWrapper = clone.querySelector('.product-image');
       if (product.isChipLogo) imgWrapper.classList.add('chip-logo');
 
