@@ -2,8 +2,8 @@ export const productsData = [
   {
     id: 'amd-strix-halo',
     title: 'AMD Ryzen AI Max+ 395 (Strix Halo)',
-    description: 'Compact AI workstation featuring unified memory architecture, ideal for running local LLMs and daily operations.',
-    price: 2800,
+    description: 'A compact AI workstation featuring unified memory architecture and power-efficient hardware, ideal for experimentation with running local LLM inference.',
+    price: 3000,
     modality: 'textual',
     deployment: 'poc-only',
     image: './assets/images/Products/GMKtec-evox2.png',
@@ -12,7 +12,7 @@ export const productsData = [
     specs: {
       memoryCapacity: 'Up to 128 GB unified memory',
       memoryBandwidth: '256 GB/s',
-      performance: 'Up to 126 TOPS (INT8)'
+      performance: 'Up to 126 TOPS (INT8 dense)'
     },
     specValues: {
       memoryCapacity: 128,
@@ -23,7 +23,7 @@ export const productsData = [
   {
     id: 'mac-studio-m4-max',
     title: 'Mac Studio M4 Max',
-    description: 'Exceptional single-user AI performance in a compact form factor with the M4 Max chip and high-Memory bandwidth unified memory.',
+    description: 'A performant single-user AI workstation in a compact form factor, featuring Apple\'s M4 Max chip and high-bandwidth unified memory for high-speed local inference tasks.',
     outOfStock: true,
     price: 2500,
     modality: 'visual,textual,audio',
@@ -45,7 +45,7 @@ export const productsData = [
   {
     id: 'mac-studio-m3-ultra',
     title: 'Mac Studio M3 Ultra',
-    description: "Apple's most powerful desktop chip comes with a massive unified memory capacity and high-bandwith memory, making it an excellent choice for real-time text generation.",
+    description: 'Apple\'s top-tier AI workstation featuring the M3 Ultra chip, massive unified memory capacity and high memory bandwidth — an excellent choice for demanding local inference and real-time text generation.',
     outOfStock: true,
     price: 5000,
     modality: 'visual,textual,audio',
@@ -67,8 +67,8 @@ export const productsData = [
   {
     id: 'nvidia-gb10',
     title: 'Nvidia GB10 (DGX Spark / Asus GX10)',
-    description: 'A compact machine powered by Nvidia\'s Grace Blackwell architecture. Provides an excellent platform for prototyping, testing and deploying AI models in a small and power-efficient package.',
-    price: 4500,
+    description: 'A compact machine powered by Nvidia\'s Grace Blackwell architecture. Provides an excellent development platform for running and fine-tuning AI models in a small and power-efficient package.',
+    price: 5000,
     modality: 'textual,visual',
     deployment: 'poc-only',
     image: './assets/images/Products/nvidia_gb10_dgx.png',
@@ -88,8 +88,8 @@ export const productsData = [
   {
     id: 'single-gpu',
     title: 'Single-GPU Workstation',
-    description: 'A highly customizable desktop computer for any use case, with good future upgradability options. Suited for running small to medium sized AI models for individuals or a small team.',
-    price: 3500,
+    description: 'A highly customizable desktop computer for any use case, with good options for modular upgrades. Suited for running small to medium sized AI models for individuals or a small team.',
+    price: 3800,
     modality: 'visual,textual',
     deployment: '',
     image: './assets/images/Products/single_gpu_workstation.png',
@@ -110,7 +110,7 @@ export const productsData = [
     id: 'dual-gpu',
     title: 'Dual-GPU Workstation',
     description: 'A cost-effective desktop solution for more demanding tasks that don\'t require a full enterprise server. Suited for running medium to medium-large sized AI models for individuals or a small team.',
-    price: 6500,
+    price: 7200,
     modality: 'visual,textual,audio',
     deployment: '',
     image: './assets/images/Products/dual_gpu_workstation.png',

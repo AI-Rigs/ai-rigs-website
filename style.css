@@ -219,12 +219,12 @@ h4 {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  opacity: 0.70;
+  opacity: 0.6;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(16, 185, 129, 0.2), transparent),
-    radial-gradient(ellipse 70% 50% at 75% 60%, rgba(59, 130, 246, 0.2), transparent),
-    radial-gradient(ellipse 60% 40% at 50% 20%, rgba(139, 92, 246, 0.2), transparent);
-  background-size: 220% 220%;
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(13, 209, 144, 0.2), transparent),
+    radial-gradient(ellipse 70% 50% at 75% 60%, rgba(38, 112, 230, 0.2), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 20%, rgba(70, 14, 199, 0.2), transparent);
+  background-size: 175% 175%;
   animation: aurora-drift 20s linear infinite;
 }
 
@@ -233,12 +233,16 @@ h4 {
     background-position: 0% 0%;
   }
 
-  33% {
-    background-position: 100% 50%;
+  25% {
+    background-position: 50% 50%;
   }
 
-  66% {
-    background-position: 50% 100%;
+  50% {
+    background-position: 85% 85%;
+  }
+
+  75% {
+    background-position: 50% 50%;
   }
 
   100% {
