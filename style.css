@@ -408,6 +408,11 @@ h4 {
   }
 }
 
+/* Page specific overrides */
+.software-grid .feature-card {
+  min-height: 450px;
+}
+
 .feature-card {
   background: var(--bg-card);
   padding: 3rem 2rem;
