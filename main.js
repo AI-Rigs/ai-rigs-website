@@ -170,35 +170,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderTrack = document.getElementById('slider-track');
     const modalityCheckboxes = document.querySelectorAll('.use-case-cb');
 
-    // Dynamically set budget boundaries based on products
-    const prices = products.map(p => parseInt(p.dataset.price) || 0);
-    const minPrice = products.length > 0 ? Math.min(...prices) : 2500;
-    const maxPrice = products.length > 0 ? Math.max(...prices) : 50000;
+    // Dynamically set budget boundaries based on products data
+    const prices = productsData.map(p => p.price);
+    const sliderStep = 100;
+    const minBoundary = prices.length > 0 ? Math.min(...prices) : 2500;
+    const maxBoundary = prices.length > 0 ? Math.max(...prices) : 10000;
 
-    if (minBudgetInput) {
-      minBudgetInput.min = minPrice;
-      minBudgetInput.max = maxPrice;
-      minBudgetInput.value = minPrice;
-      minBudgetInput.step = 500;
-    }
-    if (maxBudgetInput) {
-      maxBudgetInput.min = minPrice;
-      maxBudgetInput.max = maxPrice;
-      maxBudgetInput.value = maxPrice;
-      maxBudgetInput.step = 500;
-    }
-    if (budgetSliderMin) {
-      budgetSliderMin.min = minPrice;
-      budgetSliderMin.max = maxPrice;
-      budgetSliderMin.value = minPrice;
-      budgetSliderMin.step = 500;
-    }
-    if (budgetSliderMax) {
-      budgetSliderMax.min = minPrice;
-      budgetSliderMax.max = maxPrice;
-      budgetSliderMax.value = maxPrice;
-      budgetSliderMax.step = 500;
-    }
+    // Initialize all budget-related inputs with dynamic boundaries
+    const budgetControls = [minBudgetInput, maxBudgetInput, budgetSliderMin, budgetSliderMax];
+    budgetControls.forEach(control => {
+      if (!control) return;
+      control.min = minBoundary;
+      control.max = maxBoundary;
+      control.step = sliderStep;
+    });
+
+    // Set initial values to cover the full dynamic range
+    if (minBudgetInput) minBudgetInput.value = minBoundary;
+    if (maxBudgetInput) maxBudgetInput.value = maxBoundary;
+    if (budgetSliderMin) budgetSliderMin.value = minBoundary;
+    if (budgetSliderMax) budgetSliderMax.value = maxBoundary;
 
     let isInitialized = false;
 
