@@ -413,6 +413,20 @@ h4 {
   min-height: 450px;
 }
 
+.about-grid .feature-card {
+  cursor: default;
+  transition: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.about-grid .feature-card:hover {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  transform: none;
+}
+
+
 .feature-card {
   background: var(--bg-card);
   padding: 3rem 2rem;
