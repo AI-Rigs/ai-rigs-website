@@ -54,6 +54,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const successMsg = document.getElementById('formSuccess');
 
   if (form) {
+    const usecaseSelect = document.getElementById('usecase');
+    const detailsTextarea = document.getElementById('details');
+    const detailsLabel = document.querySelector('label[for="details"]');
+
+    const updateDetailsRequired = () => {
+      if (usecaseSelect && detailsTextarea) {
+        if (usecaseSelect.value === 'other') {
+          detailsTextarea.required = true;
+          detailsTextarea.placeholder = 'Please provide details about your custom workflow (required)...';
+          if (detailsLabel && !detailsLabel.querySelector('.required-asterisk')) {
+            const asterisk = document.createElement('span');
+            asterisk.className = 'required-asterisk';
+            asterisk.textContent = ' *';
+            asterisk.style.color = 'var(--accent-primary)';
+            detailsLabel.appendChild(asterisk);
+          }
+        } else {
+          detailsTextarea.required = false;
+          detailsTextarea.placeholder = 'Tell us more about your goals, preferences and constraints.\nThe more details you provide, the better we can assist you.';
+          if (detailsLabel) {
+            const asterisk = detailsLabel.querySelector('.required-asterisk');
+            if (asterisk) {
+              asterisk.remove();
+            }
+          }
+        }
+      }
+    };
+
+    if (usecaseSelect && detailsTextarea) {
+      usecaseSelect.addEventListener('change', updateDetailsRequired);
+      updateDetailsRequired();
+    }
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -72,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => {
         form.reset();
+        updateDetailsRequired();
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
 
