@@ -30,24 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.style.top = '100%';
         navLinks.style.left = '0';
         navLinks.style.width = '100%';
-        navLinks.style.background = 'rgba(7, 11, 20, 0.95)';
+        navLinks.style.background = 'var(--header-scrolled-bg)';
         navLinks.style.padding = '1rem';
-        navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        navLinks.style.borderBottom = '1px solid var(--border-color)';
       }
     });
   }
 
   // Header scroll effect
   const header = document.querySelector('.header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.style.background = 'rgba(7, 11, 20, 0.95)';
-      header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
-    } else {
-      header.style.background = 'rgba(7, 11, 20, 0.8)';
-      header.style.boxShadow = 'none';
-    }
-  });
+  if (header) {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  }
 
   // Form submission handling
   const form = document.getElementById('aiRigForm');
@@ -745,8 +747,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Theme Toggle Logic
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const isLight = document.documentElement.classList.contains('light-theme');
+      if (isLight) {
+        document.documentElement.classList.remove('light-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  }
+
+  // OS Theme Sync Listener
+  const systemThemeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+  systemThemeMediaQuery.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      if (e.matches) {
+        document.documentElement.classList.add('light-theme');
+      } else {
+        document.documentElement.classList.remove('light-theme');
+      }
+    }
+  });
+
   // Re-enable CSS transitions now that initialization is complete
   requestAnimationFrame(() => {
+    document.documentElement.classList.remove('no-initial-transitions');
     document.body.classList.remove('no-initial-transitions');
   });
 });

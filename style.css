@@ -11,6 +11,55 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --font-main: 'Outfit', sans-serif;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Added for light/dark dynamic capability */
+  --bg-features: #0B111E;
+  --bg-footer: #04070C;
+  --header-bg: rgba(7, 11, 20, 0.8);
+  --header-scrolled-bg: rgba(7, 11, 20, 0.95);
+  --header-scrolled-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+  --hero-glow-1: rgba(13, 209, 144, 0.2);
+  --hero-glow-2: rgba(38, 112, 230, 0.2);
+  --hero-glow-3: rgba(70, 14, 199, 0.2);
+
+  --btn-secondary-bg: rgba(255, 255, 255, 0.1);
+  --btn-secondary-hover-bg: rgba(255, 255, 255, 0.15);
+  --btn-secondary-text: var(--text-main);
+
+  --input-bg: rgba(0, 0, 0, 0.2);
+  --input-focus-bg: rgba(16, 185, 129, 0.05);
+  --slider-track-bg: rgba(255, 255, 255, 0.1);
+  --tooltip-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.light-theme {
+  --bg-dark: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F5F9;
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --border-color: #E2E8F0;
+  
+  --bg-features: #F1F5F9;
+  --bg-footer: #F1F5F9;
+  
+  --header-bg: rgba(248, 250, 252, 0.8);
+  --header-scrolled-bg: rgba(248, 250, 252, 0.95);
+  --header-scrolled-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+
+  --hero-glow-1: rgba(16, 185, 129, 0.08);
+  --hero-glow-2: rgba(59, 130, 246, 0.08);
+  --hero-glow-3: rgba(124, 58, 237, 0.08);
+
+  --btn-secondary-bg: #E2E8F0;
+  --btn-secondary-hover-bg: #CBD5E1;
+  --btn-secondary-text: #0F172A;
+
+  --input-bg: #FFFFFF;
+  --input-focus-bg: rgba(16, 185, 129, 0.05);
+  --slider-track-bg: #E2E8F0;
+  --tooltip-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
 }
 
 * {
@@ -31,6 +80,8 @@ body {
   overflow-x: hidden;
 }
 
+html.no-initial-transitions,
+html.no-initial-transitions *,
 body.no-initial-transitions,
 body.no-initial-transitions * {
   transition: none !important;
@@ -83,13 +134,13 @@ h4 {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-main);
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
   backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--btn-secondary-hover-bg);
 }
 
 .btn-outline {
@@ -129,10 +180,15 @@ h4 {
   left: 0;
   width: 100%;
   z-index: 50;
-  background: rgba(7, 11, 20, 0.8);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   transition: var(--transition);
+}
+
+.header.scrolled {
+  background: var(--header-scrolled-bg);
+  box-shadow: var(--header-scrolled-shadow);
 }
 
 .header-container {
@@ -221,9 +277,9 @@ h4 {
   overflow: hidden;
   opacity: 0.6;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(13, 209, 144, 0.2), transparent),
-    radial-gradient(ellipse 70% 50% at 75% 60%, rgba(38, 112, 230, 0.2), transparent),
-    radial-gradient(ellipse 60% 40% at 50% 20%, rgba(70, 14, 199, 0.2), transparent);
+    radial-gradient(ellipse 80% 60% at 20% 40%, var(--hero-glow-1), transparent),
+    radial-gradient(ellipse 70% 50% at 75% 60%, var(--hero-glow-2), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 20%, var(--hero-glow-3), transparent);
   background-size: 175% 175%;
   animation: aurora-drift 20s linear infinite;
 }
@@ -366,7 +422,7 @@ h4 {
 /* Features */
 .features {
   padding: 3rem 0;
-  background: #0B111E;
+  background: var(--bg-features);
 }
 
 .section-heading {
@@ -726,7 +782,7 @@ input[type=number] {
 .custom-form textarea {
   width: 100%;
   padding: 0.875rem 1rem;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--input-bg);
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   color: var(--text-main);
@@ -744,7 +800,7 @@ input[type=number] {
 .custom-form textarea:focus {
   outline: none;
   border-color: var(--accent-primary);
-  background: rgba(16, 185, 129, 0.05);
+  background: var(--input-focus-bg);
 }
 
 .custom-form .form-row {
@@ -837,7 +893,7 @@ input[type=number] {
 
 /* Footer */
 .footer {
-  background: #04070C;
+  background: var(--bg-footer);
   padding: 2.5rem 0 1.5rem;
   border-top: 1px solid var(--border-color);
 }
@@ -1119,7 +1175,7 @@ input[type=number] {
   font-size: 0.9rem;
   width: 300px;
   line-height: 1.5;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--tooltip-shadow);
   border: 1px solid var(--border-color);
   visibility: hidden;
   opacity: 0;
@@ -1192,7 +1248,7 @@ input[type=number] {
 .budget-inputs input {
   width: 100%;
   padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--input-bg);
   border: 1px solid var(--border-color);
   border-radius: 0.25rem;
   color: var(--text-main);
@@ -1240,7 +1296,7 @@ input[type=number] {
   left: 0;
   right: 0;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--slider-track-bg);
   border-radius: 2px;
 }
 
@@ -1342,4 +1398,67 @@ body.no-initial-transitions .range-slider-track {
     width: auto;
     margin-right: 0.5rem;
   }
+}
+
+/* ==========================================================================
+   Theme Transition Styles & Toggle Button
+   ========================================================================== */
+body, header, section, footer, .feature-card, .catalog-sidebar, .tooltip-content, input, select, textarea, button, a {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.light-theme .theme-toggle-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+/* Light Theme state: show moon, hide sun */
+.light-theme .sun-icon {
+  transform: translateY(40px) rotate(45deg);
+  opacity: 0;
+}
+
+.light-theme .moon-icon {
+  transform: translateY(0) rotate(0deg);
+  opacity: 1;
+}
+
+/* Default Dark Theme state: show sun, hide moon */
+html:not(.light-theme) .sun-icon {
+  transform: translateY(0) rotate(0deg);
+  opacity: 1;
+}
+
+html:not(.light-theme) .moon-icon {
+  transform: translateY(-40px) rotate(-45deg);
+  opacity: 0;
 }
