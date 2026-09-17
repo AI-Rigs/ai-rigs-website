@@ -540,7 +540,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle contact form pre-selection
-  const contactUseCase = urlParams.get('usecase');
+  let contactUseCase = urlParams.get('usecase') || urlParams.get('use-case');
+  const contactService = urlParams.get('service');
+  const contactConsult = urlParams.get('consult');
+  if (!contactUseCase && (contactService === 'consulting' || contactConsult)) {
+    if (contactConsult === 'hardware') {
+      contactUseCase = 'consult-hardware';
+    } else if (contactConsult === 'software') {
+      contactUseCase = 'consult-software';
+    } else {
+      contactUseCase = 'consult-both';
+    }
+  }
   const contactBudget = urlParams.get('budget');
   const contactDeployment = urlParams.get('deployment');
   const contactHardware = urlParams.get('hardware');
