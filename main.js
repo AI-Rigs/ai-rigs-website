@@ -1,8 +1,12 @@
 import { productsData, specDefinitions } from './products.js';
 import { globalHeader, globalFooter } from './components.js';
+import { initAurora } from './aurora.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
+
+  // Initialize photorealistic Aurora Borealis in hero background
+  initAurora();
 
   // Inject global header and footer dynamically
   const headerElem = document.querySelector('.header');
@@ -576,6 +580,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Banner Word Animation ---
   const bannerX = document.getElementById('banner-x');
   const bannerY = document.getElementById('banner-y');
+  const prefixX = document.getElementById('prefix-x') || (bannerX ? bannerX.closest('.banner-sentence')?.querySelector('.prefix') : null);
+  const prefixY = document.getElementById('prefix-y') || (bannerY ? bannerY.closest('.banner-sentence')?.querySelector('.prefix') : null);
 
   if (bannerX && bannerY) {
     const xValues = [
@@ -602,20 +608,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function nextX() {
       bannerX.classList.add('switching');
+      if (prefixX) prefixX.classList.add('switching');
       setTimeout(() => {
         xIndex = (xIndex + 1) % xValues.length;
         bannerX.textContent = xValues[xIndex];
-        bannerX.classList.remove('switching');
-      }, 400);
+        requestAnimationFrame(() => {
+          bannerX.classList.remove('switching');
+          if (prefixX) prefixX.classList.remove('switching');
+        });
+      }, 300);
     }
 
     function nextY() {
       bannerY.classList.add('switching');
+      if (prefixY) prefixY.classList.add('switching');
       setTimeout(() => {
         yIndex = (yIndex + 1) % yValues.length;
         bannerY.textContent = yValues[yIndex];
-        bannerY.classList.remove('switching');
-      }, 400);
+        requestAnimationFrame(() => {
+          bannerY.classList.remove('switching');
+          if (prefixY) prefixY.classList.remove('switching');
+        });
+      }, 300);
     }
 
     function getRandomInt(min, max) {
@@ -648,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scheduleX() {
-      const delay = getRandomInt(7000, 8000);
+      const delay = getRandomInt(9000, 10000);
       setTimeout(() => {
         nextXWithCoordination();
         scheduleX();
@@ -656,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scheduleY() {
-      const delay = getRandomInt(7000, 9500);
+      const delay = getRandomInt(9000, 11500);
       setTimeout(() => {
         nextYWithCoordination();
         scheduleY();
