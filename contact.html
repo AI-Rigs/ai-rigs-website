@@ -3,7 +3,7 @@
 
 <head>
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('theme');
       const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
       if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
@@ -33,7 +33,7 @@
       <div class="lead-container">
         <div class="lead-info">
           <h2>Your succesful AI workflows are<br> only one step away.</h2>
-          <p>Contact us now and discover the optimal solution for your needs.</p>
+          <p>Contact us now to find the optimal solution for your needs.</p>
           <ul class="lead-benefits">
             <li>Response within 2 business days</li>
             <li>Free initial consultation</li>
@@ -53,7 +53,7 @@
             <div class="form-group">
               <label for="usecase">Inquiry Type / Primary Workload</label>
               <select id="usecase" name="usecase" required>
-                <option value="" disabled selected>Select how we can help you</option>
+                <option value="" disabled selected hidden>Select how we can help you</option>
                 <optgroup label="Consultancy & Advisory">
                   <option value="consult-both">Full Stack AI Consultation (Hardware & Software)</option>
                   <option value="consult-hardware">Hardware Architecture & Sizing Consultation</option>

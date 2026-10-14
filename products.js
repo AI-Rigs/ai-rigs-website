@@ -1,74 +1,74 @@
 export const productsData = [
   {
     id: 'amd-strix-halo',
-    title: 'AMD Ryzen AI Max+ 395 (Strix Halo)',
+    title: 'AMD Ryzen AI Max+ 395/ PRO 495 (Strix Halo/Gorgon Halo)',
     description: 'A compact AI workstation featuring unified memory architecture and power-efficient hardware, ideal for experimentation with running local LLM inference.',
-    price: 3000,
+    price: 4000,
     modality: 'textual',
     deployment: 'poc-only',
-    image: './assets/images/Products/GMKtec-evox2.png',
+    image: './assets/images/Products/amd-ai-halo.jpg',
     imageAlt: 'AMD Ryzen AI Max+ 395 Strix Halo mini-PC',
     isChipLogo: false,
     specs: {
-      memoryCapacity: 'Up to 128 GB unified memory',
-      memoryBandwidth: '256 GB/s',
-      performance: 'Up to 126 TOPS (INT8 dense)'
+      memoryCapacity: 'Up to 192 GB unified memory',
+      memoryBandwidth: 'Up to 273 GB/s',
+      performance: 'Up to 131 TOPS (INT8 dense, estimated)'
     },
     specValues: {
-      memoryCapacity: 128,
-      memoryBandwidth: 256,
-      performance: 126
+      memoryCapacity: 192,
+      memoryBandwidth: 273,
+      performance: 131
     }
   },
-  {
-    id: 'mac-studio-m4-max',
-    title: 'Mac Studio M4 Max',
-    description: 'A performant single-user AI workstation in a compact form factor, featuring Apple\'s M4 Max chip and high-bandwidth unified memory for high-speed local inference tasks.',
-    outOfStock: true,
-    price: 2500,
-    modality: 'visual,textual,audio',
-    deployment: 'poc-only',
-    image: './assets/images/Products/m4-max-wide.png',
-    imageAlt: 'Apple M4 Max',
-    isChipLogo: true,
-    specs: {
-      memoryCapacity: 'Up to 128 GB unified memory',
-      memoryBandwidth: '546 GB/s',
-      performance: '38 TOPS (INT8, Neural Engine)'
-    },
-    specValues: {
-      memoryCapacity: 128,
-      memoryBandwidth: 546,
-      performance: 38
-    }
-  },
-  {
-    id: 'mac-studio-m3-ultra',
-    title: 'Mac Studio M3 Ultra',
-    description: 'Apple\'s top-tier AI workstation featuring the M3 Ultra chip, massive unified memory capacity and high memory bandwidth — an excellent choice for demanding local inference and real-time text generation.',
-    outOfStock: true,
-    price: 5000,
-    modality: 'visual,textual,audio',
-    deployment: 'poc-only',
-    image: './assets/images/Products/m3-ultra-wide.png',
-    imageAlt: 'Apple M3 Ultra',
-    isChipLogo: true,
-    specs: {
-      memoryCapacity: 'Up to 256 GB Unified Memory',
-      memoryBandwidth: '819 GB/s',
-      performance: '36 TOPS (INT8, Neural Engine)'
-    },
-    specValues: {
-      memoryCapacity: 256,
-      memoryBandwidth: 819,
-      performance: 36
-    }
-  },
+  // {
+  //   id: 'mac-studio-m4-max',
+  //   title: 'Mac Studio M4 Max',
+  //   description: 'A performant single-user AI workstation in a compact form factor, featuring Apple\'s M4 Max chip and high-bandwidth unified memory for high-speed local inference tasks.',
+  //   outOfStock: true,
+  //   price: 2500,
+  //   modality: 'visual,textual,audio',
+  //   deployment: 'poc-only',
+  //   image: './assets/images/Products/m4-max-wide.png',
+  //   imageAlt: 'Apple M4 Max',
+  //   isChipLogo: true,
+  //   specs: {
+  //     memoryCapacity: 'Up to 128 GB unified memory',
+  //     memoryBandwidth: '546 GB/s',
+  //     performance: '38 TOPS (INT8, Neural Engine)'
+  //   },
+  //   specValues: {
+  //     memoryCapacity: 128,
+  //     memoryBandwidth: 546,
+  //     performance: 38
+  //   }
+  // },
+  // {
+  //   id: 'mac-studio-m3-ultra',
+  //   title: 'Mac Studio M3 Ultra',
+  //   description: 'Apple\'s top-tier AI workstation featuring the M3 Ultra chip, massive unified memory capacity and high memory bandwidth — an excellent choice for demanding local inference and real-time text generation.',
+  //   outOfStock: true,
+  //   price: 5000,
+  //   modality: 'visual,textual,audio',
+  //   deployment: 'poc-only',
+  //   image: './assets/images/Products/m3-ultra-wide.png',
+  //   imageAlt: 'Apple M3 Ultra',
+  //   isChipLogo: true,
+  //   specs: {
+  //     memoryCapacity: 'Up to 256 GB Unified Memory',
+  //     memoryBandwidth: '819 GB/s',
+  //     performance: '36 TOPS (INT8, Neural Engine)'
+  //   },
+  //   specValues: {
+  //     memoryCapacity: 256,
+  //     memoryBandwidth: 819,
+  //     performance: 36
+  //   }
+  // },
   {
     id: 'nvidia-gb10',
     title: 'Nvidia GB10 (DGX Spark / Asus GX10)',
     description: 'A compact machine powered by Nvidia\'s Grace Blackwell architecture. Provides an excellent development platform for running and fine-tuning AI models in a small and power-efficient package.',
-    price: 5000,
+    price: 8000,
     modality: 'textual,visual',
     deployment: 'poc-only',
     image: './assets/images/Products/nvidia_gb10_dgx.png',
@@ -87,14 +87,15 @@ export const productsData = [
   },
   {
     id: 'single-gpu',
-    title: 'Single-GPU Workstation',
+    title: 'Single-GPU AI Workstation',
     description: 'A highly customizable desktop computer for any use case, with good options for modular upgrades. Suited for running small to medium sized AI models for individuals or a small team.',
-    price: 3800,
+    price: 4000,
     modality: 'visual,textual',
     deployment: '',
-    image: './assets/images/Products/single_gpu_workstation.png',
+    image: './assets/images/Products/single-gpu-ai-rigs.jpg',
     imageAlt: 'Entry-Level Single GPU Workstation',
     isChipLogo: false,
+    cropLeft: true,
     specs: {
       memoryCapacity: 'Up to 96 GB GDDR7',
       memoryBandwidth: 'Up to 1792 GB/s',
@@ -108,14 +109,15 @@ export const productsData = [
   },
   {
     id: 'dual-gpu',
-    title: 'Dual-GPU Workstation',
+    title: 'Dual-GPU AI Workstation',
     description: 'A cost-effective desktop solution for more demanding tasks that don\'t require a full enterprise server. Suited for running medium to medium-large sized AI models for individuals or a small team.',
-    price: 7200,
+    price: 7500,
     modality: 'visual,textual,audio',
     deployment: '',
-    image: './assets/images/Products/dual_gpu_workstation.png',
+    image: './assets/images/Products/dual-gpu-ai-rigs.jpg',
     imageAlt: 'Mid-Range Dual GPU Workstation',
     isChipLogo: false,
+    cropLeft: true,
     specs: {
       memoryCapacity: 'Up to 192 GB GDDR7 (combined)',
       memoryBandwidth: 'Up to 3584 GB/s (combined)',

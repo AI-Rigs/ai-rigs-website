@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (product.outOfStock) {
         card.classList.add('out-of-stock');
-        
+
         const btn = clone.querySelector('.btn-primary');
         if (btn) {
           btn.classList.add('hidden');
@@ -161,10 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const imgWrapper = clone.querySelector('.product-image');
       if (product.isChipLogo) imgWrapper.classList.add('chip-logo');
+      if (product.cropLeft) imgWrapper.classList.add('crop-left');
 
       const img = clone.querySelector('.product-img');
       img.src = product.image;
       img.alt = product.imageAlt;
+      if (product.cropLeft) img.classList.add('crop-left');
 
       clone.querySelector('.product-title').textContent = product.title;
       clone.querySelector('.product-description').textContent = product.description;
@@ -624,7 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const xValues = [
       "vendor lock-in.",
       "changing terms and conditions.",
-      "shrinking rate limits.",
+      "API rate limits.",
       "high congestion times.",
       "cloud model degradation."
     ];
@@ -774,7 +776,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Theme Toggle Logic
   const themeToggleBtn = document.getElementById('theme-toggle');
+  const updateThemeToggleText = () => {
+    if (!themeToggleBtn) return;
+    const isLight = document.documentElement.classList.contains('light-theme');
+    const label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+    themeToggleBtn.setAttribute('title', label);
+    themeToggleBtn.setAttribute('aria-label', label);
+  };
+
   if (themeToggleBtn) {
+    updateThemeToggleText();
+
     themeToggleBtn.addEventListener('click', () => {
       const isLight = document.documentElement.classList.contains('light-theme');
       if (isLight) {
@@ -784,6 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.classList.add('light-theme');
         localStorage.setItem('theme', 'light');
       }
+      updateThemeToggleText();
     });
   }
 
@@ -796,6 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         document.documentElement.classList.remove('light-theme');
       }
+      updateThemeToggleText();
     }
   });
 

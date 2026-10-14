@@ -3,7 +3,7 @@
 
 <head>
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('theme');
       const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
       if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
@@ -27,14 +27,21 @@
   <!-- Header (injected via JS) -->
   <header class="header"></header>
 
+  <!-- Hero Section -->
+  <section class="hero" style="min-height: 34vh; padding-top: 8rem;">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <h1 class="hero-title"><span class="highlight">Ready out of the box</span><br> for your AI workflow.</h1>
+      <p class="hero-subtitle">
+        All our machines come pre-configured with the software you need.<br>
+        Save hours of setup time and get straight to doing business.
+      </p>
+    </div>
+  </section>
+
   <!-- Base Models -->
-  <section class="products" id="workstations">
+  <section class="products" id="workstations" style="padding-top: 0;">
     <div class="container">
-      <div class="catalog-header">
-
-
-
-      </div>
 
       <div class="catalog-layout">
         <!-- Sidebar Filters -->

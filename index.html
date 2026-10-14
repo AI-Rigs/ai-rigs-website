@@ -3,7 +3,7 @@
 
 <head>
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('theme');
       const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
       if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
@@ -34,37 +34,12 @@
       <!-- Main Headline -->
       <h1 class="hero-title">
         <span class="highlight">Run AI locally.</span>
-        <span class="hero-subtitle-text">Preserve your sensitive data with highly customizable AI
-          models that match your exact business needs. Deploy reliable AI solutions with low
-          latency at a predictable cost.</span>
+        <span class="hero-subtitle-text">Enjoy low latency, predictable
+          costs and <br> complete data privacy with on-premise AI solutions. </span>
       </h1>
 
-      <!-- Dynamic Value Proposition Banner -->
-      <div class="hero-banner-animated">
-        <h2 class="banner-sentence">
-          <span id="prefix-x" class="prefix">Say goodbye to</span>
-          <span class="dynamic-wrap"><span id="banner-x" class="dynamic-word">vendor lock-in.</span></span>
-        </h2>
-        <h2 class="banner-sentence">
-          <span id="prefix-y" class="prefix">Own your</span>
-          <span class="dynamic-wrap"><span id="banner-y" class="dynamic-word">sensitive data.</span></span>
-        </h2>
-      </div>
-
-      <!-- Hero CTA -->
-      <div class="hero-cta">
-        <a href="contact.html" class="btn btn-primary btn-large">Get in Touch <span class="arrow">&rarr;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dual-Pillar Consultation Tracks (50/50 Split) -->
-  <section class="features" id="consulting" style="padding: 4rem 0;">
-    <div class="container">
-      <div class="section-heading text-center" style="margin-bottom: 3rem;">
-        <h2 style="font-size: 2.25rem;">Our Offerings</h2>
-      </div>
-      <div class="consulting-split-grid">
+      <!-- Product & Service Offerings (Dual Pillars) -->
+      <div class="consulting-split-grid hero-offerings-grid">
         <!-- Hardware Consultation Pillar -->
         <div class="pillar-card hardware-pillar">
           <div class="pillar-header">
@@ -81,13 +56,13 @@
             </div>
           </div>
           <ul class="pillar-features">
-            <li>AI Workstations & Cluster Provisioning</li>
+            <li>Desktop AI workstations & small AI supercomputers</li>
             <li>Multi-vendor hardware support (Nvidia, Intel, AMD)</li>
-            <li>Turnkey system configurations</li>
+            <li>Turnkey system solutions</li>
           </ul>
 
           <div class="pillar-action">
-            <a href="hardware.html" class="btn btn-outline btn-block">Explore Hardware<span
+            <a href="hardware.html" class="btn btn-outline btn-block">Explore Hardware <span
                 class="arrow">&rarr;</span></a>
           </div>
         </div>
@@ -108,31 +83,42 @@
             </div>
           </div>
           <ul class="pillar-features">
-            <li>AI Model selection & optimization</li>
+            <li>Local AI model selection & optimization</li>
             <li>Fine-tuning and agentic workflows</li>
-            <li>API inference configurations</li>
+            <li>API inference configuration</li>
           </ul>
 
           <div class="pillar-action">
-            <a href="software.html" class="btn btn-outline btn-block">Explore Services<span
+            <a href="software.html" class="btn btn-outline btn-block">Explore Use Cases <span
                 class="arrow">&rarr;</span></a>
           </div>
         </div>
       </div>
+
+      <!-- Dynamic Value Proposition Banner -->
+      <div class="hero-banner-animated">
+        <h2 class="banner-sentence">
+          <span id="prefix-x" class="prefix">Say goodbye to</span>
+          <span class="dynamic-wrap"><span id="banner-x" class="dynamic-word">vendor lock-in.</span></span>
+        </h2>
+        <h2 class="banner-sentence">
+          <span id="prefix-y" class="prefix">Own your</span>
+          <span class="dynamic-wrap"><span id="banner-y" class="dynamic-word">sensitive data.</span></span>
+        </h2>
+      </div>
     </div>
   </section>
 
-
-
-
   <!-- Consultation CTA Section -->
-  <section class="lead-section" style="padding: 6rem 0;">
+  <section class="lead-section"
+    style="padding: 6rem 0; border-top: none; display: flex; align-items: center; justify-content: center;">
     <div class="container text-center">
-      <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: 2.75rem; margin-bottom: 1.25rem;">Ready to build your local AI infrastructure?</h2>
+      <div
+        style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h2 style="font-size: 2.75rem; margin-top: 0; margin-bottom: 1.25rem;">Ready to build your local AI
+          infrastructure?</h2>
         <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
-          Speak directly with our engineers. We’ll help you evaluate whether hardware, software, or a complete turnkey
-          stack is right for your organization.
+          We’ll help you evaluate which solution is right for you.
         </p>
         <div class="hero-cta" style="margin-top: 0;">
           <a href="contact.html" class="btn btn-primary btn-large">Get in Touch <span class="arrow">&rarr;</span></a>

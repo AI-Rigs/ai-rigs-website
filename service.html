@@ -3,7 +3,7 @@
 
 <head>
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('theme');
       const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
       if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
@@ -28,10 +28,10 @@
   <header class="header"></header>
 
   <!-- Hero Section -->
-  <section class="hero" style="min-height: 40vh; padding-top: 8rem;">
+  <section class="hero" style="min-height: 34vh; padding-top: 8rem;">
     <div class="hero-bg"></div>
     <div class="container hero-content">
-      <h1 class="hero-title"><span class="highlight">Support you can rely on,</span><br> every step
+      <h1 class="hero-title"><span class="highlight">Support you can rely on</span><br> every step
         of the way.
       </h1>
       <p class="hero-subtitle">
@@ -65,7 +65,8 @@
         <div class="feature-card">
           <div class="feature-icon">📞</div>
           <h3>Dedicated Service Hours</h3>
-          <p>Skip the generic support queue with . Our team experimentalist in AI infrastructure is available to help you
+          <p>Skip the generic support queue with . Our team experimentalist in AI infrastructure is available to help
+            you
             troubleshoot everything from hardware issues to CUDA driver conflicts.</p>
         </div>
       </div>

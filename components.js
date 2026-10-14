@@ -14,7 +14,7 @@ export const globalHeader = `
         </ul>
       </nav>
       <div class="header-actions">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle between Dark and Light mode">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme" title="Switch to light theme">
           <!-- Sun Icon for switching to Light mode -->
           <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="4"></circle>

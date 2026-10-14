@@ -202,9 +202,9 @@ const FRAGMENT_SHADER_SOURCE = `
     // Time scaling with reduced-motion support
     float t = u_time * u_speed_mult;
 
-    // Deep cosmic night sky background
+    // Deep cosmic night sky background (always dark, like a night sky)
     vec3 skyZenith  = vec3(0.012, 0.024, 0.052);
-    vec3 skyHorizon = BG_DARK; // Exact match to site background
+    vec3 skyHorizon = BG_DARK; // Exact match to site background #070B14
     vec3 color = mix(skyHorizon, skyZenith, uv.y);
 
     // Twinkling stars
@@ -212,16 +212,14 @@ const FRAGMENT_SHADER_SOURCE = `
     color += stars;
 
     // Right-heavy focus distribution:
-    // Strongly concentrated on the right side (uv.x > 0.45, peaking at 0.70 .. 0.95)
-    // Tapers to a gentle, clean ambient glow on the left (uv.x < 0.40) for text clarity
     float rightWeight1 = smoothstep(0.08, 0.82, uv.x) * 1.30 + smoothstep(0.48, 0.95, uv.x) * 0.75;
-    rightWeight1 = clamp(rightWeight1, 0.08, 2.0);
+    rightWeight1 = clamp(rightWeight1, 0.12, 2.0);
 
     float rightWeight2 = smoothstep(-0.02, 0.78, uv.x) * 1.0 + smoothstep(0.55, 1.0, uv.x) * 0.80;
-    rightWeight2 = clamp(rightWeight2, 0.06, 1.8);
+    rightWeight2 = clamp(rightWeight2, 0.08, 1.8);
 
     float rightWeight3 = smoothstep(0.25, 0.92, uv.x) * 1.45;
-    rightWeight3 = clamp(rightWeight3, 0.03, 1.85);
+    rightWeight3 = clamp(rightWeight3, 0.05, 1.85);
 
     // Layer 1: Primary dramatic foreground curtain
     vec4 curtain1 = renderCurtain(
@@ -262,21 +260,21 @@ const FRAGMENT_SHADER_SOURCE = `
       12.4
     );
 
-    // Volumetric additive accumulation - subdued and gentle on the eyes
+    // Volumetric additive accumulation with enhanced contrast & prominent glow
     vec3 auroraAccum = vec3(0.0);
-    auroraAccum += curtain1.rgb * 0.55;
-    auroraAccum += curtain2.rgb * 0.42;
-    auroraAccum += curtain3.rgb * 0.35;
+    auroraAccum += curtain1.rgb * 0.75;
+    auroraAccum += curtain2.rgb * 0.55;
+    auroraAccum += curtain3.rgb * 0.45;
 
     // Atmospheric ambient glow: soft diffused light cast into surroundings
-    float totalDensity = curtain1.a + curtain2.a * 0.7 + curtain3.a * 0.5;
-    vec3 ambientGreenViolet = mix(vec3(0.01, 0.30, 0.20), vec3(0.20, 0.08, 0.32), uv.y);
-    auroraAccum += ambientGreenViolet * totalDensity * rightWeight1 * 0.15;
+    float totalDensity = curtain1.a + curtain2.a * 0.75 + curtain3.a * 0.55;
+    vec3 ambientGreenViolet = mix(vec3(0.01, 0.34, 0.24), vec3(0.24, 0.10, 0.38), uv.y);
+    auroraAccum += ambientGreenViolet * totalDensity * rightWeight1 * 0.22;
 
     // Composite aurora onto night sky
     color += auroraAccum;
 
-    // Smooth blend at bottom into exact site background color
+    // Smooth blend at bottom into exact site background color (#070B14)
     float bottomBlend = smoothstep(0.0, 0.28, uv.y);
     color = mix(BG_DARK, color, bottomBlend);
 
@@ -285,7 +283,7 @@ const FRAGMENT_SHADER_SOURCE = `
     color *= topVignette;
 
     // Cinematic tone mapping and gamma
-    color = color / (1.0 + color * 0.38);
+    color = color / (1.0 + color * 0.35);
     color = pow(color, vec3(0.95));
 
     gl_FragColor = vec4(color, 1.0);
